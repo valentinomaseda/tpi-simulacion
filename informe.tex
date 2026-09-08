@@ -1,0 +1,134 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{cite}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\begin{document}
+
+% --- PORTADA ---
+\begin{titlepage}
+    \centering
+    \LARGE \textbf{Universidad Tecnológica Nacional}\\
+    \Large Facultad Regional Rosario\\
+    \large Departamento de Ingeniería en Sistemas de Información\\[2.5cm]
+    
+    \Huge \textbf{Trabajo Práctico Integrador}\\
+    \vspace{0.5cm}
+    \LARGE Simulación del Flujo de Votantes y Tiempos de Espera en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes\\[2.5cm]
+    
+    \large
+    \textbf{Cátedra:} Simulación\\
+    \textbf{Docentes:} Juan Torres, Guillermo Leale\\[1.5cm]
+    
+    \textbf{Integrantes:}\\
+    Manuel Casanovas\\
+    Valentino Maseda\\
+    Valentín Peppino\\
+    Gianlucas Zabaleta\\[2cm]
+    
+    \vfill
+    \large Rosario, 2026
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% --- 1. INTRODUCCIÓN Y FORMULACIÓN ---
+\section{Introducción y Planificación del Estudio}
+% Paso 1: Formulación del problema y planificación del estudio
+Breve contextualización del problema en el centro de votación de la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. Definición de objetivos generales y específicos, alcance acotado y métricas de desempeño a evaluar ($W$, $d(n)$, colas).
+
+\section{Recolección de Datos y Definición del Modelo}
+% Paso 2: Recolección de datos y definición del modelo
+Descripción de los parámetros de entrada (tasas de arribo según franja horaria, tiempos de acreditación, tiempos en cuarto oscuro y tiempos de egreso). Especificación de supuestos y disciplina de colas FIFO.
+
+\section{Validación del Modelo Conceptual}
+% Paso 3: Validación del modelo conceptual
+Diagramas de flujo del proceso de votación, revisión conceptual del desacople entre acreditación y emisión del voto frente a la dinámica real.
+
+\section{Construcción y Verificación del Programa}
+% Paso 4: Construcción y verificación del programa
+Implementación en AnyLogic utilizando la librería \textit{Process Modeling Library}. Descripción de los bloques empleados (\texttt{Source}, \texttt{Queue}, \texttt{Delay}, \texttt{Sink}) y verificación de la lógica interna sin errores de compilación.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.85\textwidth]{diagrama_anylogic.png}
+    \caption{Diagrama de bloques de la simulación electoral implementada en AnyLogic.}
+    \label{fig:anylogic_blocks}
+\end{figure}
+
+\section{Ejecuciones Piloto}
+% Paso 5: Ejecuciones piloto
+Corridas preliminares para verificar la consistencia en el dimensionamiento de variables, comportamiento del reloj de simulación y estimación inicial de la variabilidad muestral.
+
+\section{Validación del Modelo Programado}
+% Paso 6: Validación del modelo programado
+Contraste del modelo base frente a datos históricos o estimaciones razonables de jornadas electorales para comprobar que las salidas representen fielmente el comportamiento del establecimiento.
+
+\section{Diseño de Experimentos}
+% Paso 7: Diseño de experimentos
+Definición de los escenarios a comparar:
+\begin{itemize}
+    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral.
+    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa.
+\end{itemize}
+Configuración de réplicas independientes mediante \textit{Random Seed} y horizonte temporal fijado en 10 horas de jornada electoral.
+
+\section{Corridas de Producción}
+% Paso 8: Corridas de producción
+Consolidación de las $n$ réplicas independientes ejecutadas en AnyLogic para ambos escenarios.
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados consolidados de las réplicas por escenario.}
+    \label{tab:metricas_corridas}
+    \begin{tabular}{ccccc}
+        \toprule
+        \textbf{Métrica} & \textbf{Escenario Actual} & \textbf{Escenario Alternativo} & \textbf{Diferencia} \\
+        \midrule
+        Tiempo en Cola $d(n)$ [min] & -- & -- & -- \\
+        Permanencia $W$ [min] & -- & -- & -- \\
+        Longitud de Cola Máxima & -- & -- & -- \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Análisis de los Datos de Salida}
+% Paso 9: Análisis de los datos de salida
+\subsection{Contraste de Hipótesis: Test de Medias}
+Planteo formal del test de hipótesis para muestras independientes sobre la reducción del tiempo medio en cola:
+\begin{equation}
+    H_0: \mu_{\text{actual}} - \mu_{\text{alternativo}} = 0 \quad \text{vs.} \quad H_1: \mu_{\text{actual}} - \mu_{\text{alternativo}} > 0
+\end{equation}
+Cálculo del estadístico de prueba $t$, grados de libertad, intervalo de confianza para la diferencia de medias y valor $p$ obtenido.
+
+\section{Conclusiones, Recomendaciones y Uso de Resultados}
+% Paso 10: Documentación, presentación y uso de resultados
+Interpretación de los resultados obtenidos a partir del test de medias. Dictamen fundado sobre la viabilidad y conveniencia de implementar el segundo biombo en las mesas de votación.
+
+% --- BIBLIOGRAFÍA ---
+\newpage
+\begin{thebibliography}{99}
+    \bibitem{law2014}
+    Law, A. M. (2014). \textit{Simulation Modeling and Analysis} (5th ed.). McGraw-Hill Education.
+    
+    \bibitem{torres2026}
+    Torres, J. I. (2026). \textit{Guía de Trabajo Práctico Integrador: Aplicación de técnicas de simulación a un caso real}. Universidad Tecnológica Nacional - Facultad Regional Rosario.
+\end{thebibliography}
+
+\end{document}
