@@ -81,15 +81,19 @@ Para la caracterización del centro de votación, se relevaron los datos corresp
     \end{tabular}
 \end{table}
 
-A partir de estos registros empíricos, se aislaron los ausentes y se configuró un volumen de demanda exacto de 2.199 agentes. Esto determinó una tasa de arribos teórica promedio de \(\lambda = 219,9\) votantes/hora para la jornada de 10 horas. El ruteo de votantes hacia las 9 mesas no se asumió equiprobable, sino que se calibró utilizando la proporción empírica exacta (ej. 12,18\% de probabilidad de derivación a la Mesa 44, sometiéndola a un mayor estrés como cuello de botella, frente a un 10,23\% de la Mesa 40). 
+A partir de estos registros empíricos, los ausentes fueron aislados para configurar una demanda inyectada de exactamente 2.199 agentes. En la simulación, esto se materializó mediante un bloque \texttt{Source} definido por tasa de arribos (\(\lambda = 219,9\) votantes/hora para una jornada de 10 horas) y restringido con un límite estricto de llegadas. 
+
+Dada la limitación de los bloques derivadores de AnyLogic a un máximo de 5 salidas, el ruteo hacia las 9 mesas se modeló en cascada. El primer derivador distribuye el flujo a las mesas 38 a 41 y envía el remanente (1.241 agentes) a un segundo bloque. Las probabilidades de ruteo se configuraron matemáticamente utilizando fracciones exactas según los datos históricos (por ejemplo, el primer bloque deriva a la Mesa 38 con una probabilidad de \(243/2199\), mientras que el segundo derivador asigna a la Mesa 44 con una probabilidad de \(268/1241\)). Esto garantiza que mesas históricamente concurridas sufran un estrés proporcional en la simulación.
 
 \section{Validación del Modelo Conceptual}
 Diagramas de flujo del proceso de votación, revisión conceptual del desacople entre acreditación, ingreso al biombo/cuarto oscuro y firma del padrón frente a la dinámica real del establecimiento.
 
 \section{Construcción y Verificación del Programa}
-La implementación se desarrolló en el software AnyLogic utilizando la \textit{Process Modeling Library}. El movimiento de los electores se mapeó lógicamente mediante \textit{Space Markup} (nodos y rutas precisas sobre el plano del recinto) y se diseñó un agente tridimensional personalizado (\texttt{Votante}) con funciones de coloración de vestimenta aleatoria para facilitar la inspección visual.
+La implementación se desarrolló en el software AnyLogic utilizando la \textit{Process Modeling Library}. El flujo consta de la triada Acreditación, Voto y Egreso (bloques \texttt{Delay}) conectados por traslados (\texttt{MoveTo}) y colas (\texttt{Queue}). 
 
-El flujo consta de bloques \texttt{Source}, derivadores \texttt{SelectOutput}, y una triada de trámites por cada mesa: Acreditación (\texttt{Delay}), Voto (\texttt{Delay}) y Egreso (\texttt{Delay}), interconectados por traslados espaciales (\texttt{MoveTo}). Para asegurar la estabilidad lógica del motor Java y evitar excepciones por bloqueo de puertos, se garantizó que todo bloque \texttt{Delay} posea una capacidad máxima estricta y se encuentre precedido por un bloque \texttt{Queue} configurado con \textit{Maximum Capacity}, permitiendo la acumulación física realista de las filas en los pasillos. El cálculo del tiempo en el sistema se automatizó mediante integradores \texttt{TimeMeasureStart} y \texttt{TimeMeasureEnd}.
+Para asegurar la estabilidad lógica del motor de simulación y evitar excepciones, todo bloque \texttt{Delay} posee una capacidad estricta, encontrándose precedido por un bloque \texttt{Queue} configurado con \textit{Maximum Capacity}, permitiendo la acumulación gráfica y lógica en pasillos sin bloqueos de puerto.
+
+En cuanto a la dimensión visual (\textit{Space Markup}), se diseñó un agente tridimensional personalizado (\texttt{Votante}). Para dotar a la multitud de realismo visual, se introdujo código Java (\texttt{randomColor()}) en la acción \textit{On startup} de los agentes, variando aleatoriamente la pigmentación de sus materiales. A nivel topológico, la animación espacial se perfeccionó utilizando \textit{Point Nodes} como destino explícito de las caminatas (\texttt{MoveTo}) y líneas \textit{Paths} asignadas a los bloques \texttt{Queue}. Esta configuración erradica el solapamiento 3D (agentes fusionados en un mismo punto matemático) al obligar a los electores en espera a distribuirse físicamente a lo largo de los pasillos.
 
 \begin{figure}[H]
     \centering
@@ -99,7 +103,7 @@ El flujo consta de bloques \texttt{Source}, derivadores \texttt{SelectOutput}, y
 \end{figure}
 
 \section{Ejecuciones Piloto}
-Se realizaron corridas preliminares a velocidad máxima para verificar el dimensionamiento de las filas, confirmar que el modelo no excediera el límite de 50.000 agentes trabados en memoria, y corroborar el freno algorítmico exacto del motor de simulación tras el cumplimiento de las 10 horas (36.000 segundos).
+Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre los \textit{Paths}, confirmar que el modelo no excediera límites de memoria y corroborar el freno algorítmico exacto tras el cumplimiento de las 10 horas (36.000 segundos) operativas.
 
 \section{Validación del Modelo Programado}
 Contraste del modelo base frente a la participación real y los tiempos percibidos. Verificación visual 3D del flujo continuo para confirmar la ausencia de superposiciones y la correcta animación lógica de un elector a la vez por cuarto oscuro.
@@ -110,7 +114,7 @@ Se definieron dos configuraciones estructurales para el análisis de capacidad:
     \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral (\texttt{Capacity = 1}).
     \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa (\texttt{Capacity = 2}).
 \end{itemize}
-Para garantizar la validez estadística y absorber la estocasticidad de los tiempos triangulares, se configuró un experimento de tipo \textit{Parameter Variation}. El horizonte temporal se fijó en 36.000 segundos, ejecutando de manera desatendida 20 réplicas independientes mediante el uso de \textit{Random Seed} únicos. A través de rutinas de código Java (\texttt{traceln}), se promediaron los indicadores globales de las 9 mesas al finalizar cada réplica.
+Para garantizar la validez estadística y absorber la estocasticidad de los tiempos triangulares, se configuró un experimento de tipo \textit{Parameter Variation}. El horizonte temporal se fijó en 36.000 segundos, ejecutando de manera desatendida 20 réplicas independientes mediante el uso de \textit{Random Seed} únicos. A través de rutinas de código Java (\texttt{traceln}), se extrajeron las métricas globales promediadas tras cada jornada simulada.
 
 \section{Corridas de Producción}
 La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}.
