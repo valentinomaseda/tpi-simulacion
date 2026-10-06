@@ -3,6 +3,7 @@
 \usepackage[spanish,es-tabla]{babel}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{float}
@@ -55,7 +56,34 @@ Breve contextualización del problema en el centro de votación de la Escuela de
 
 \section{Recolección de Datos y Definición del Modelo}
 % Paso 2: Recolección de datos y definición del modelo
-Descripción de los parámetros de entrada (tasas de arribo según franja horaria, tiempos de acreditación, tiempos en cuarto oscuro y tiempos de egreso). Especificación de supuestos y disciplina de colas FIFO.
+Para la caracterización del centro de votación en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes, se relevaron los datos correspondientes a las 9 mesas electorales asignadas al establecimiento (mesas 38 a 46). El padrón electoral totalizó 3.146 electores habilitados, con una concurrencia efectiva de 2.199 votantes durante la jornada (un 69,90\% de participación promedio), según se detalla en la Tabla~\ref{tab:participacion_mesas}.
+
+\begin{table}[H]
+    \centering
+    \small
+    \setlength{\tabcolsep}{6pt}
+    \caption{Padrón y nivel de participación por mesa electoral.}
+    \label{tab:participacion_mesas}
+    \begin{tabular}{ccccc}
+        \toprule
+        \textbf{Mesa} & \textbf{Electores en Padrón} & \textbf{Total Votantes} & \textbf{Ausentes} & \textbf{\% Participación} \\
+        \midrule
+        38 & 348 & 243 & 105 & 69,83\% \\
+        39 & 350 & 235 & 115 & 67,14\% \\
+        40 & 348 & 225 & 123 & 64,66\% \\
+        41 & 350 & 255 & 95  & 72,86\% \\
+        42 & 350 & 245 & 105 & 70,00\% \\
+        43 & 351 & 239 & 112 & 68,09\% \\
+        44 & 350 & 268 & 82  & 76,57\% \\
+        45 & 349 & 258 & 91  & 73,93\% \\
+        46 & 350 & 231 & 119 & 66,00\% \\
+        \midrule
+        \textbf{Total} & \textbf{3.146} & \textbf{2.199} & \textbf{947} & \textbf{69,90\%} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+A partir de estos registros, se determinaron los parámetros de entrada para el modelo de simulación: tasas de arribo según franja horaria, tiempos de acreditación, tiempos en cuarto oscuro y tiempos de egreso. Se especifican los supuestos operativos y la disciplina de colas FIFO para la atención en cada mesa.
 
 \section{Validación del Modelo Conceptual}
 % Paso 3: Validación del modelo conceptual
@@ -95,9 +123,10 @@ Consolidación de las $n$ réplicas independientes ejecutadas en AnyLogic para a
 
 \begin{table}[H]
     \centering
+    \small
     \caption{Resultados consolidados de las réplicas por escenario.}
     \label{tab:metricas_corridas}
-    \begin{tabular}{ccccc}
+    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}Xccc}
         \toprule
         \textbf{Métrica} & \textbf{Escenario Actual} & \textbf{Escenario Alternativo} & \textbf{Diferencia} \\
         \midrule
@@ -105,7 +134,7 @@ Consolidación de las $n$ réplicas independientes ejecutadas en AnyLogic para a
         Permanencia $W$ [min] & -- & -- & -- \\
         Longitud de Cola Máxima & -- & -- & -- \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
 \end{table}
 
 \section{Análisis de los Datos de Salida}
