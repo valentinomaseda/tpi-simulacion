@@ -2,11 +2,11 @@
 \contentsline {section}{\numberline {1}Introducción y Planificación del Estudio}{2}{section.1}%
 \contentsline {section}{\numberline {2}Recolección de Datos y Definición del Modelo}{2}{section.2}%
 \contentsline {section}{\numberline {3}Validación del Modelo Conceptual}{2}{section.3}%
-\contentsline {section}{\numberline {4}Construcción y Verificación del Programa}{2}{section.4}%
+\contentsline {section}{\numberline {4}Construcción y Verificación del Programa}{3}{section.4}%
 \contentsline {section}{\numberline {5}Ejecuciones Piloto}{3}{section.5}%
 \contentsline {section}{\numberline {6}Validación del Modelo Programado}{3}{section.6}%
 \contentsline {section}{\numberline {7}Diseño de Experimentos}{3}{section.7}%
-\contentsline {section}{\numberline {8}Corridas de Producción}{3}{section.8}%
-\contentsline {section}{\numberline {9}Análisis de los Datos de Salida}{3}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Contraste de Hipótesis: Test de Medias}{3}{subsection.9.1}%
+\contentsline {section}{\numberline {8}Corridas de Producción}{4}{section.8}%
+\contentsline {section}{\numberline {9}Análisis de los Datos de Salida}{4}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Contraste de Hipótesis: Test de Medias}{4}{subsection.9.1}%
 \contentsline {section}{\numberline {10}Conclusiones, Recomendaciones y Uso de Resultados}{4}{section.10}%

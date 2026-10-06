@@ -51,12 +51,10 @@
 
 % --- 1. INTRODUCCIÓN Y FORMULACIÓN ---
 \section{Introducción y Planificación del Estudio}
-% Paso 1: Formulación del problema y planificación del estudio
-Breve contextualización del problema en el centro de votación de la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. Definición de objetivos generales y específicos, alcance acotado y métricas de desempeño a evaluar ($W$, $d(n)$, colas).
+Breve contextualización del problema en el centro de votación de la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. Definición de objetivos generales y específicos, alcance acotado y métricas de desempeño a evaluar (Tiempo en el sistema \(W\), longitud de colas \(L_q\), y utilización de los cuartos oscuros \(U\)).
 
 \section{Recolección de Datos y Definición del Modelo}
-% Paso 2: Recolección de datos y definición del modelo
-Para la caracterización del centro de votación en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes, se relevaron los datos correspondientes a las 9 mesas electorales asignadas al establecimiento (mesas 38 a 46). El padrón electoral totalizó 3.146 electores habilitados, con una concurrencia efectiva de 2.199 votantes durante la jornada (un 69,90\% de participación promedio), según se detalla en la Tabla~\ref{tab:participacion_mesas}.
+Para la caracterización del centro de votación, se relevaron los datos correspondientes a las 9 mesas electorales asignadas al establecimiento (mesas 38 a 46). El padrón electoral totalizó 3.146 electores habilitados, con una concurrencia efectiva de 2.199 votantes durante la jornada (un 69,90\% de participación promedio), según se detalla en la Tabla~\ref{tab:participacion_mesas}.
 
 \begin{table}[H]
     \centering
@@ -83,15 +81,15 @@ Para la caracterización del centro de votación en la Escuela de Educación Sec
     \end{tabular}
 \end{table}
 
-A partir de estos registros, se determinaron los parámetros de entrada para el modelo de simulación: tasas de arribo según franja horaria, tiempos de acreditación, tiempos en cuarto oscuro y tiempos de egreso. Se especifican los supuestos operativos y la disciplina de colas FIFO para la atención en cada mesa.
+A partir de estos registros empíricos, se aislaron los ausentes y se configuró un volumen de demanda exacto de 2.199 agentes. Esto determinó una tasa de arribos teórica promedio de \(\lambda = 219,9\) votantes/hora para la jornada de 10 horas. El ruteo de votantes hacia las 9 mesas no se asumió equiprobable, sino que se calibró utilizando la proporción empírica exacta (ej. 12,18\% de probabilidad de derivación a la Mesa 44, sometiéndola a un mayor estrés como cuello de botella, frente a un 10,23\% de la Mesa 40). 
 
 \section{Validación del Modelo Conceptual}
-% Paso 3: Validación del modelo conceptual
-Diagramas de flujo del proceso de votación, revisión conceptual del desacople entre acreditación y emisión del voto frente a la dinámica real.
+Diagramas de flujo del proceso de votación, revisión conceptual del desacople entre acreditación, ingreso al biombo/cuarto oscuro y firma del padrón frente a la dinámica real del establecimiento.
 
 \section{Construcción y Verificación del Programa}
-% Paso 4: Construcción y verificación del programa
-Implementación en AnyLogic utilizando la librería \textit{Process Modeling Library}. Descripción de los bloques empleados (\texttt{Source}, \texttt{Queue}, \texttt{Delay}, \texttt{Sink}) y verificación de la lógica interna sin errores de compilación.
+La implementación se desarrolló en el software AnyLogic utilizando la \textit{Process Modeling Library}. El movimiento de los electores se mapeó lógicamente mediante \textit{Space Markup} (nodos y rutas precisas sobre el plano del recinto) y se diseñó un agente tridimensional personalizado (\texttt{Votante}) con funciones de coloración de vestimenta aleatoria para facilitar la inspección visual.
+
+El flujo consta de bloques \texttt{Source}, derivadores \texttt{SelectOutput}, y una triada de trámites por cada mesa: Acreditación (\texttt{Delay}), Voto (\texttt{Delay}) y Egreso (\texttt{Delay}), interconectados por traslados espaciales (\texttt{MoveTo}). Para asegurar la estabilidad lógica del motor Java y evitar excepciones por bloqueo de puertos, se garantizó que todo bloque \texttt{Delay} posea una capacidad máxima estricta y se encuentre precedido por un bloque \texttt{Queue} configurado con \textit{Maximum Capacity}, permitiendo la acumulación física realista de las filas en los pasillos. El cálculo del tiempo en el sistema se automatizó mediante integradores \texttt{TimeMeasureStart} y \texttt{TimeMeasureEnd}.
 
 \begin{figure}[H]
     \centering
@@ -101,54 +99,48 @@ Implementación en AnyLogic utilizando la librería \textit{Process Modeling Lib
 \end{figure}
 
 \section{Ejecuciones Piloto}
-% Paso 5: Ejecuciones piloto
-Corridas preliminares para verificar la consistencia en el dimensionamiento de variables, comportamiento del reloj de simulación y estimación inicial de la variabilidad muestral.
+Se realizaron corridas preliminares a velocidad máxima para verificar el dimensionamiento de las filas, confirmar que el modelo no excediera el límite de 50.000 agentes trabados en memoria, y corroborar el freno algorítmico exacto del motor de simulación tras el cumplimiento de las 10 horas (36.000 segundos).
 
 \section{Validación del Modelo Programado}
-% Paso 6: Validación del modelo programado
-Contraste del modelo base frente a datos históricos o estimaciones razonables de jornadas electorales para comprobar que las salidas representen fielmente el comportamiento del establecimiento.
+Contraste del modelo base frente a la participación real y los tiempos percibidos. Verificación visual 3D del flujo continuo para confirmar la ausencia de superposiciones y la correcta animación lógica de un elector a la vez por cuarto oscuro.
 
 \section{Diseño de Experimentos}
-% Paso 7: Diseño de experimentos
-Definición de los escenarios a comparar:
+Se definieron dos configuraciones estructurales para el análisis de capacidad:
 \begin{itemize}
-    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral.
-    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa.
+    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral (\texttt{Capacity = 1}).
+    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa (\texttt{Capacity = 2}).
 \end{itemize}
-Configuración de réplicas independientes mediante \textit{Random Seed} y horizonte temporal fijado en 10 horas de jornada electoral.
+Para garantizar la validez estadística y absorber la estocasticidad de los tiempos triangulares, se configuró un experimento de tipo \textit{Parameter Variation}. El horizonte temporal se fijó en 36.000 segundos, ejecutando de manera desatendida 20 réplicas independientes mediante el uso de \textit{Random Seed} únicos. A través de rutinas de código Java (\texttt{traceln}), se promediaron los indicadores globales de las 9 mesas al finalizar cada réplica.
 
 \section{Corridas de Producción}
-% Paso 8: Corridas de producción
-Consolidación de las $n$ réplicas independientes ejecutadas en AnyLogic para ambos escenarios.
+La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}.
 
 \begin{table}[H]
     \centering
     \small
-    \caption{Resultados consolidados de las réplicas por escenario.}
+    \caption{Resultados promediados de las 20 réplicas por escenario.}
     \label{tab:metricas_corridas}
     \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}Xccc}
         \toprule
-        \textbf{Métrica} & \textbf{Escenario Actual} & \textbf{Escenario Alternativo} & \textbf{Diferencia} \\
+        \textbf{Métrica Promedio (9 Mesas)} & \textbf{Escenario Base} & \textbf{Escenario 2 Biombos} & \textbf{Diferencia} \\
         \midrule
-        Tiempo en Cola $d(n)$ [min] & -- & -- & -- \\
-        Permanencia $W$ [min] & -- & -- & -- \\
-        Longitud de Cola Máxima & -- & -- & -- \\
+        Permanencia en Sistema \(W\) [min] & -- & -- & -- \\
+        Longitud Promedio de Colas \(L_q\) & -- & -- & -- \\
+        Utilización Biombos \(U\) [\%] & -- & -- & -- \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
 \section{Análisis de los Datos de Salida}
-% Paso 9: Análisis de los datos de salida
 \subsection{Contraste de Hipótesis: Test de Medias}
-Planteo formal del test de hipótesis para muestras independientes sobre la reducción del tiempo medio en cola:
+Se plantea formalmente un test de hipótesis para muestras independientes con el objetivo de evaluar la significancia estadística de la reducción del tiempo medio en el sistema tras añadir infraestructura:
 \begin{equation}
-    H_0: \mu_{\text{actual}} - \mu_{\text{alternativo}} = 0 \quad \text{vs.} \quad H_1: \mu_{\text{actual}} - \mu_{\text{alternativo}} > 0
+    H_0: W_{\text{base}} - W_{\text{alt}} = 0 \quad \text{vs.} \quad H_1: W_{\text{base}} - W_{\text{alt}} > 0
 \end{equation}
-Cálculo del estadístico de prueba $t$, grados de libertad, intervalo de confianza para la diferencia de medias y valor $p$ obtenido.
+Cálculo del estadístico de prueba \(t\), grados de libertad, intervalo de confianza para la diferencia de medias y valor \(p\) obtenido a partir de los datos de las corridas.
 
 \section{Conclusiones, Recomendaciones y Uso de Resultados}
-% Paso 10: Documentación, presentación y uso de resultados
-Interpretación de los resultados obtenidos a partir del test de medias. Dictamen fundado sobre la viabilidad y conveniencia de implementar el segundo biombo en las mesas de votación.
+Interpretación de los resultados obtenidos del simulador y del test de medias. Dictamen fundado sobre la factibilidad de mitigar los cuellos de botella mediante la distribución de un segundo biombo, equilibrando el costo de instalación frente a la reducción del tiempo ocioso y de las filas en los pasillos de la escuela.
 
 % --- BIBLIOGRAFÍA ---
 \newpage
