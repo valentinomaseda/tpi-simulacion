@@ -93,7 +93,7 @@ La implementación se desarrolló en el software AnyLogic utilizando la \textit{
 
 Para asegurar la estabilidad lógica del motor de simulación y evitar excepciones, todo bloque \texttt{Delay} posee una capacidad estricta, encontrándose precedido por un bloque \texttt{Queue} configurado con \textit{Maximum Capacity}, permitiendo la acumulación gráfica y lógica en pasillos sin bloqueos de puerto.
 
-En cuanto a la dimensión visual (\textit{Space Markup}), se diseñó un agente tridimensional personalizado (\texttt{Votante}). Para dotar a la multitud de realismo visual, se introdujo código Java (\texttt{randomColor()}) en la acción \textit{On startup} de los agentes, variando aleatoriamente la pigmentación de sus materiales. A nivel topológico, la animación espacial se perfeccionó utilizando \textit{Point Nodes} como destino explícito de las caminatas (\texttt{MoveTo}) y líneas \textit{Paths} asignadas a los bloques \texttt{Queue}. Esta configuración erradica el solapamiento 3D (agentes fusionados en un mismo punto matemático) al obligar a los electores en espera a distribuirse físicamente a lo largo de los pasillos.
+En cuanto a la dimensión visual (\textit{Space Markup}), se diseñó un agente tridimensional personalizado (\texttt{Votante}). Para dotar a la multitud de realismo visual, se introdujo código Java (\texttt{randomColor()}) en la acción \textit{On startup} de los agentes, variando aleatoriamente la pigmentación de sus materiales. A nivel topológico, la animación espacial se perfeccionó utilizando \textit{Point Nodes} como destino explícito de las caminatas (\texttt{MoveTo}) y líneas \textit{Paths} asignadas a los bloques \texttt{Queue}. Esta configuración erradica el solapamiento 3D al obligar a los electores en espera a distribuirse físicamente a lo largo de los pasillos.
 
 \begin{figure}[H]
     \centering
@@ -117,7 +117,9 @@ Se definieron dos configuraciones estructurales para el análisis de capacidad:
 Para garantizar la validez estadística y absorber la estocasticidad de los tiempos triangulares, se configuró un experimento de tipo \textit{Parameter Variation}. El horizonte temporal se fijó en 36.000 segundos, ejecutando de manera desatendida 20 réplicas independientes mediante el uso de \textit{Random Seed} únicos. A través de rutinas de código Java (\texttt{traceln}), se extrajeron las métricas globales promediadas tras cada jornada simulada.
 
 \section{Corridas de Producción}
-La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}.
+La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}. 
+
+Los datos del Escenario Base revelan un comportamiento sumamente fluido del sistema real: un tiempo total de permanencia muy bajo y una longitud de cola fraccionaria, indicando que en la mayoría de las iteraciones los electores no experimentaron demoras significativas.
 
 \begin{table}[H]
     \centering
@@ -128,9 +130,9 @@ La consolidación de las 20 réplicas independientes ejecutadas en el simulador 
         \toprule
         \textbf{Métrica Promedio (9 Mesas)} & \textbf{Escenario Base} & \textbf{Escenario 2 Biombos} & \textbf{Diferencia} \\
         \midrule
-        Permanencia en Sistema \(W\) [min] & -- & -- & -- \\
-        Longitud Promedio de Colas \(L_q\) & -- & -- & -- \\
-        Utilización Biombos \(U\) [\%] & -- & -- & -- \\
+        Permanencia en Sistema \(W\) [min] & 3.01 & -- & -- \\
+        Longitud Promedio de Colas \(L_q\) & 0.23 & -- & -- \\
+        Utilización Biombos \(U\) [\%]     & 47.40\% & -- & -- \\
         \bottomrule
     \end{tabularx}
 \end{table}
@@ -144,7 +146,7 @@ Se plantea formalmente un test de hipótesis para muestras independientes con el
 Cálculo del estadístico de prueba \(t\), grados de libertad, intervalo de confianza para la diferencia de medias y valor \(p\) obtenido a partir de los datos de las corridas.
 
 \section{Conclusiones, Recomendaciones y Uso de Resultados}
-Interpretación de los resultados obtenidos del simulador y del test de medias. Dictamen fundado sobre la factibilidad de mitigar los cuellos de botella mediante la distribución de un segundo biombo, equilibrando el costo de instalación frente a la reducción del tiempo ocioso y de las filas en los pasillos de la escuela.
+La evidencia empírica arrojada por la simulación del Escenario Base sugiere fuertemente que el cuello de botella tradicionalmente asociado a los procesos electorales no se originó en la falta de capacidad del cuarto oscuro. Con una utilización promedio del 47,40\%, el recurso se encontró ocioso más de la mitad de la jornada. Si bien la adición de un segundo biombo será analizada mediante el contraste de medias, los resultados preliminares indican que el costo de expansión de infraestructura podría no estar justificado por una reducción marginal de tiempos que ya se encuentran en niveles óptimos.
 
 % --- BIBLIOGRAFÍA ---
 \newpage
