@@ -1,12 +1,15 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Introducción y Planificación del Estudio}{2}{section.1}%
-\contentsline {section}{\numberline {2}Recolección de Datos y Definición del Modelo}{3}{section.2}%
-\contentsline {section}{\numberline {3}Validación del Modelo Conceptual}{4}{section.3}%
-\contentsline {section}{\numberline {4}Construcción y Verificación del Programa}{5}{section.4}%
-\contentsline {section}{\numberline {5}Ejecuciones Piloto}{6}{section.5}%
-\contentsline {section}{\numberline {6}Validación del Modelo Programado}{6}{section.6}%
-\contentsline {section}{\numberline {7}Diseño de Experimentos}{6}{section.7}%
-\contentsline {section}{\numberline {8}Corridas de Producción}{6}{section.8}%
-\contentsline {section}{\numberline {9}Análisis de los Datos de Salida}{7}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Contraste de Hipótesis: Test de Medias}{7}{subsection.9.1}%
-\contentsline {section}{\numberline {10}Conclusiones, Recomendaciones y Uso de Resultados}{7}{section.10}%
+\contentsline {section}{\numberline {2}Recolección de Datos y Definición del Modelo}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Parámetros de Servicio y Supuestos Estocásticos}{2}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Validación del Modelo Conceptual}{3}{section.3}%
+\contentsline {section}{\numberline {4}Construcción y Verificación del Programa en AnyLogic}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Calibración del Layout Espacial y Animación 3D}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Estructura de Bloques y Ruteo Probabilístico}{4}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Ejecuciones Piloto}{4}{section.5}%
+\contentsline {section}{\numberline {6}Validación del Modelo Programado}{4}{section.6}%
+\contentsline {section}{\numberline {7}Diseño de Experimentos}{5}{section.7}%
+\contentsline {section}{\numberline {8}Corridas de Producción}{5}{section.8}%
+\contentsline {section}{\numberline {9}Análisis de los Datos de Salida}{5}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Contraste de Hipótesis: Test de Medias}{5}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Conclusiones, Recomendaciones y Uso de Resultados}{6}{section.10}%

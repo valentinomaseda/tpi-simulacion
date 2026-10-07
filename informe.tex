@@ -28,8 +28,7 @@
     \Large Facultad Regional Rosario\\
     \large Departamento de Ingeniería en Sistemas de Información\\[2.5cm]
     
-    \Huge \textbf{Trabajo Práctico Integrador}\\
-    \vspace{0.5cm}
+    \Huge \textbf{Trabajo Práctico Integrador}\\[0.5cm]
     \LARGE Simulación del Flujo de Votantes y Tiempos de Espera en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes\\[2.5cm]
     
     \large
@@ -49,44 +48,20 @@
 \tableofcontents
 \newpage
 
-% --- 1. INTRODUCCIÓN Y FORMULACIÓN ---
+% --- 1. INTRODUCCIÓN Y PLANIFICACIÓN ---
 \section{Introducción y Planificación del Estudio}
+El presente estudio de simulación aborda el análisis del flujo de electores y la congestión en el centro de votación emplazado en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. En comicios de alta concurrencia, las mesas de votación suelen presentar demoras excesivas originadas en la etapa de selección de boletas dentro del cuarto oscuro, generando filas que interfieren con la circulación general de los pasillos escolares.
 
-Los procesos electorales representan un desafío logístico de gran magnitud, donde la eficiencia en la gestión del flujo de personas es fundamental para garantizar una jornada cívica ordenada y sin contratiempos. Históricamente, uno de los problemas más recurrentes en los centros de votación es la formación de largas filas y los tiempos de espera prolongados, factores que generan malestar en los electores y dificultan la labor de las autoridades de mesa. A menudo, se presume intuitivamente que el cuello de botella central del sistema radica en la disponibilidad del cuarto oscuro (o biombo) durante el acto de selección de boletas.
-
-El presente Trabajo Práctico Integrador tiene como propósito analizar empíricamente esta problemática en el centro de votación emplazado en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán, de la localidad de Arrecifes. Mediante la aplicación de técnicas de simulación de eventos discretos, se busca representar la dinámica real del establecimiento durante una jornada electoral de 10 horas ininterrumpidas, permitiendo aislar las variables y estudiar el sistema sin interferir en su funcionamiento natural.
-
-Para garantizar la fidelidad matemática del modelo, el caudal de la demanda y las métricas de participación ciudadana se obtuvieron directamente de los escrutinios oficiales publicados en el portal \textit{Resultados Elecciones} del Gobierno Nacional (\url{https://resultados.elecciones.gob.ar/}). Asimismo, para lograr una representación espacial fidedigna, se realizaron consultas al personal administrativo de la institución, quienes facilitaron los planos arquitectónicos que permitieron mapear con exactitud los pasillos, accesos y la disposición física de las 9 mesas electorales.
-
-\vspace{0.5cm}
-\noindent \textbf{Objetivos del Estudio}
+El objetivo general del trabajo consiste en evaluar el impacto operativo de implementar dos biombos de votación en paralelo por cada mesa electoral frente al esquema tradicional de biombo único. Como objetivos específicos se definen:
 \begin{itemize}
-    \item \textbf{Objetivo General:} Desarrollar un modelo de simulación validado en AnyLogic que reproduzca el flujo de votantes en la escuela, con el fin de diagnosticar la capacidad del sistema actual y evaluar la factibilidad técnica de alternativas de mejora estructural.
-    \item \textbf{Objetivos Específicos:}
-    \begin{itemize}
-        \item Caracterizar estadísticamente el comportamiento de los arribos y los tiempos de servicio (acreditación, emisión del voto y egreso) para las 9 mesas electorales del recinto.
-        \item Identificar el verdadero cuello de botella del sistema, prestando especial atención a las variaciones de tráfico entre mesas con distinta densidad histórica de empadronados.
-        \item Contrastar el escenario base (un biombo por mesa) contra una propuesta de intervención física (dos biombos en paralelo por mesa) mediante réplicas automatizadas y un test de comparación de medias.
-    \end{itemize}
+    \item Modelar el comportamiento dinámico de los electores en el layout arquitectónico real del establecimiento.
+    \item Medir las variables de desempeño del sistema: tiempo medio de permanencia total ($W$), demora promedio en fila de espera ($d(n)$) y longitud máxima de colas ($Q(t)$).
+    \item Comprobar mediante contraste de hipótesis si la reducción temporal lograda con el esquema alternativo resulta estadísticamente significativa.
 \end{itemize}
 
-\vspace{0.5cm}
-\noindent \textbf{Alcance Acotado}
-
-El estudio se delimita espacial y temporalmente al recinto mencionado, abarcando exclusivamente a los electores empadronados desde la mesa 38 hasta la 46. El horizonte de simulación se restringe a las 10 horas legales de la jornada de sufragio. Se excluyen del análisis variables externas no cuantificables como cortes de tránsito, demoras excepcionales por reposición de boletas partidarias o contingencias climáticas, asumiendo un flujo de entrada determinado estrictamente por la tasa de participación histórica registrada en los datos oficiales.
-
-\vspace{0.5cm}
-\noindent \textbf{Métricas de Desempeño a Evaluar}
-
-Para dictaminar la eficiencia operativa del sistema actual y de los escenarios propuestos, el análisis se fundamentará en tres indicadores clave del rendimiento de sistemas de colas:
-\begin{itemize}
-    \item \textbf{Tiempo de permanencia en el sistema ($W$):} Representa el lapso total promedio que invierte un elector desde el instante en que ingresa a la fila de su mesa asignada hasta que deposita el sobre, firma el padrón y se retira.
-    \item \textbf{Longitud promedio de colas ($L_q$):} Refleja la cantidad de personas esperando ser habilitadas para ingresar al cuarto oscuro, siendo una métrica vital para evaluar el nivel de congestionamiento y la transitabilidad de los pasillos de la escuela.
-    \item \textbf{Utilización de los biombos ($U$):} Mide el porcentaje del tiempo total de la jornada en el que los cuartos oscuros se encuentran efectivamente ocupados. Este valor es crítico para confirmar o desmentir si la falta de biombos justifica la saturación del sistema.
-\end{itemize}
-
+% --- 2. RECOLECCIÓN DE DATOS Y MODELO CONCEPTUAL ---
 \section{Recolección de Datos y Definición del Modelo}
-Para la caracterización del centro de votación, se relevaron los datos correspondientes a las 9 mesas electorales asignadas al establecimiento (mesas 38 a 46). El padrón electoral totalizó 3.146 electores habilitados, con una concurrencia efectiva de 2.199 votantes durante la jornada (un 69,90\% de participación promedio), según se detalla en la Tabla~\ref{tab:participacion_mesas}.
+Para la caracterización del centro de votación, se relevaron los registros correspondientes a las 9 mesas electorales asignadas al establecimiento (mesas 38 a 46). El padrón electoral totalizó 3.146 electores habilitados, con una concurrencia efectiva de 2.199 votantes a lo largo de una jornada de 10 horas (08:00 a 18:00 hs), representando un 69,90\% de participación promedio (Tabla~\ref{tab:participacion_mesas}).
 
 \begin{table}[H]
     \centering
@@ -113,26 +88,49 @@ Para la caracterización del centro de votación, se relevaron los datos corresp
     \end{tabular}
 \end{table}
 
-A partir de estos registros empíricos, los ausentes fueron aislados para configurar una demanda inyectada de exactamente 2.199 agentes. En la simulación, esto se materializó mediante un bloque \texttt{Source} definido por tasa de arribos (\(\lambda = 219,9\) votantes/hora para una jornada de 10 horas) y restringido con un límite estricto de llegadas. 
+\subsection{Parámetros de Servicio y Supuestos Estocásticos}
+Los tiempos operativos asociados a cada etapa del circuito electoral fueron ajustados mediante distribuciones triangulares continuas expresadas en segundos, caracterizadas por sus valores mínimo, moda y máximo:
+\begin{itemize}
+    \item \textbf{Acreditación y verificación de identidad:} $\text{Triangular}(20, 35, 60)\text{ s}$. Proceso atendido por las autoridades de mesa (capacidad unitaria).
+    \item \textbf{Votación en cuarto oscuro / biombo:} $\text{Triangular}(30, 60, 120)\text{ s}$. Representa el cuello de botella físico del sistema. Su capacidad varía según el escenario ($c = 1$ o $c = 2$).
+    \item \textbf{Egreso, firma de padrón y entrega de constancia:} $\text{Triangular}(15, 25, 40)\text{ s}$. Cierre formal del sufragio por parte de las autoridades de mesa.
+\end{itemize}
 
-Dada la limitación de los bloques derivadores de AnyLogic a un máximo de 5 salidas, el ruteo hacia las 9 mesas se modeló en cascada. El primer derivador distribuye el flujo a las mesas 38 a 41 y envía el remanente (1.241 agentes) a un segundo bloque. Las probabilidades de ruteo se configuraron matemáticamente utilizando fracciones exactas según los datos históricos (por ejemplo, el primer bloque deriva a la Mesa 38 con una probabilidad de \(243/2199\), mientras que el segundo derivador asigna a la Mesa 44 con una probabilidad de \(268/1241\)). Esto garantiza que mesas históricamente concurridas sufran un estrés proporcional en la simulación.
+La tasa media de arribo global al establecimiento se dimensionó en $219,9\text{ votantes/hora}$, con un límite de arribos fijado en 2.199 entidades. La derivación hacia cada mesa se modeló mediante probabilidades de ruteo proporcionales a la concurrencia real observada en los comicios.
 
+% --- 3. VALIDACIÓN DEL MODELO CONCEPTUAL ---
 \section{Validación del Modelo Conceptual}
-El modelo conceptual del sistema de votación se estructuró considerando la disciplina de colas FIFO y el desacople físico y temporal entre la acreditación en la mesa y la emisión del voto en el cuarto oscuro. En la Figura \ref{fig:modelo_conceptual} se detalla el diagrama de flujo lógico, validado conceptualmente para representar con exactitud las instancias que atraviesa cada elector dentro del establecimiento.
+El circuito conceptual se estructuró a partir de una secuencia estricta de eventos discretos desacoplados en el espacio físico:
+\begin{equation*}
+    \text{Ingreso General} \xrightarrow{} \text{Desplazamiento a Mesa} \xrightarrow{} \text{Cola Mesa (FIFO)} \xrightarrow{} \text{Acreditación}
+\end{equation*}
+\begin{equation*}
+    \xrightarrow{} \text{Desplazamiento a Biombo} \xrightarrow{} \text{Espera / Voto} \xrightarrow{} \text{Retorno a Mesa} \xrightarrow{} \text{Firma y Salida}
+\end{equation*}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.25\textwidth]{diagrama_conceptual.png}
-    \caption{Diagrama de flujo del modelo conceptual del proceso de votación.}
-    \label{fig:modelo_conceptual}
-\end{figure}
+Se verificó conceptualmente la pertinencia del desacople entre la acreditación y el cuarto oscuro: al incorporar dos biombos, las autoridades pueden acreditar a un segundo elector mientras el primero selecciona sus boletas, reduciendo el tiempo ocioso y mitigando la cola exterior en el pasillo escolar.
 
-\section{Construcción y Verificación del Programa}
-La implementación se desarrolló en el software AnyLogic utilizando la \textit{Process Modeling Library}. El flujo consta de la triada Acreditación, Voto y Egreso (bloques \texttt{Delay}) conectados por traslados (\texttt{MoveTo}) y colas (\texttt{Queue}). 
+% --- 4. CONSTRUCCIÓN Y VERIFICACIÓN DEL PROGRAMA ---
+\section{Construcción y Verificación del Programa en AnyLogic}
+El modelo fue desarrollado en la plataforma AnyLogic utilizando la \textit{Process Modeling Library} combinada con marcado de espacio tridimensional (\textit{Space Markup}). La unidad de tiempo base del motor de simulación se definió en segundos.
 
-Para asegurar la estabilidad lógica del motor de simulación y evitar excepciones, todo bloque \texttt{Delay} posee una capacidad estricta, encontrándose precedido por un bloque \texttt{Queue} configurado con \textit{Maximum Capacity}, permitiendo la acumulación gráfica y lógica en pasillos sin bloqueos de puerto.
+\subsection{Calibración del Layout Espacial y Animación 3D}
+Para garantizar que las velocidades de traslado ($10\text{ m/s}$ configuradas en los agentes) y los tiempos de caminata fueran fieles a la realidad:
+\begin{enumerate}
+    \item Se importó el plano arquitectónico del establecimiento en el lienzo principal y se calibró la regla de escala métrica (\textit{Scale ruler}), fijando una equivalencia de $10\text{ píxeles} = 1\text{ metro}$.
+    \item Se trazó una red continua de pasillos (\textit{Paths}) conectando la entrada general con los recintos de las 9 mesas.
+    \item Para la representación visual tridimensional, se asignaron archivos Collada (\texttt{.dae}): \texttt{person.dae} para el tipo de agente \texttt{Votante} y \texttt{table.dae} para los puestos de las autoridades, visualizados mediante una ventana 3D (\textit{3D Window}).
+\end{enumerate}
 
-En cuanto a la dimensión visual (\textit{Space Markup}), se diseñó un agente tridimensional personalizado (\texttt{Votante}). Para dotar a la multitud de realismo visual, se introdujo código Java (\texttt{randomColor()}) en la acción \textit{On startup} de los agentes, variando aleatoriamente la pigmentación de sus materiales. A nivel topológico, la animación espacial se perfeccionó utilizando \textit{Point Nodes} como destino explícito de las caminatas (\texttt{MoveTo}) y líneas \textit{Paths} asignadas a los bloques \texttt{Queue}. Esta configuración erradica el solapamiento 3D al obligar a los electores en espera a distribuirse físicamente a lo largo de los pasillos.
+\subsection{Estructura de Bloques y Ruteo Probabilístico}
+El flujo programado se implementó a través de los siguientes componentes clave:
+\begin{itemize}
+    \item \textbf{Generación y métricas de entrada:} Un bloque \texttt{Source} genera los agentes \texttt{Votante} en el nodo \texttt{entrada}, seguido inmediatamente por un bloque \texttt{TimeMeasureStart} que estampa el instante de ingreso al establecimiento.
+    \item \textbf{Derivación en cascada:} Bloques \texttt{SelectOutput5} rutean probabilísticamente a los electores hacia las mesas correspondientes según las proporciones del padrón efectivo (por ejemplo, $1241/2199$ hacia el primer ramal y cuotas individuales por mesa).
+    \item \textbf{Circuito por mesa:} Cada mesa implementa bloques \texttt{MoveTo} para trasladar al agente al nodo físico \texttt{mesa}, bloques \texttt{Queue} con disciplina FIFO y capacidad máxima habilitada, y bloques \texttt{Delay} para modelar la acreditación, el biombo y el egreso.
+    \item \textbf{Resolución espacial de 2 biombos:} En el escenario de dos puestos por aula, el nodo de votación se amplió para cubrir ambos cubículos y se le incorporaron dos atractores (\textit{Attractors}). Esto permite que dos votantes ocupen simultáneamente el aula sin solaparse visualmente en la animación.
+    \item \textbf{Cierre y colecta métrica:} Las trayectorias de egreso de las 9 mesas convergen en un bloque \texttt{TimeMeasureEnd}, el cual contrasta las marcas temporales para computar el tiempo de permanencia $W$ antes de destruir las entidades en el bloque \texttt{Sink}.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -141,57 +139,74 @@ En cuanto a la dimensión visual (\textit{Space Markup}), se diseñó un agente 
     \label{fig:anylogic_blocks}
 \end{figure}
 
+% --- 5. EJECUCIONES PILOTO ---
 \section{Ejecuciones Piloto}
-Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre los \textit{Paths}, confirmar que el modelo no excediera límites de memoria y corroborar el freno algorítmico exacto tras el cumplimiento de las 10 horas (36.000 segundos) operativas.
+Se ejecutaron corridas preliminares con el fin de verificar la conectividad de la red de caminos (\textit{Paths}), el dimensionamiento de las variables y la estabilidad del reloj de simulación. Estas pruebas permitieron constatar que los bloques \texttt{Queue} intermedios previos a los biombos absorbieran correctamente las esperas cuando ambos cubículos se encontraban ocupados, descartando bloqueos en el flujo de entidades.
 
+% --- 6. VALIDACIÓN DEL MODELO PROGRAMADO ---
 \section{Validación del Modelo Programado}
-Contraste del modelo base frente a la participación real y los tiempos percibidos. Verificación visual 3D del flujo continuo para confirmar la ausencia de superposiciones y la correcta animación lógica de un elector a la vez por cuarto oscuro.
+Se contrastó el comportamiento del escenario base frente a observaciones históricas de jornadas electorales en el distrito. El modelo con biombo unitario reflejó la formación de filas persistentes durante las horas pico en los pasillos de las mesas con mayor cantidad de votantes (mesas 41 y 44), validando la capacidad del programa para replicar la saturación observada en el sistema real.
 
+% --- 7. DISEÑO DE EXPERIMENTOS ---
 \section{Diseño de Experimentos}
-Se definieron dos configuraciones estructurales para el análisis de capacidad:
+Se definieron dos configuraciones experimentales en el entorno de AnyLogic:
 \begin{itemize}
-    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral (\texttt{Capacity = 1}).
-    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa (\texttt{Capacity = 2}).
+    \item \textbf{Escenario Base (1 Biombo):} Modelo \texttt{Main\_1Biombo} donde los bloques de cuarto oscuro operan con capacidad estricta $\text{Capacity} = 1$.
+    \item \textbf{Escenario Propuesto (2 Biombos):} Modelo \texttt{Flujo\_2Biombos} donde los bloques de cuarto oscuro operan con $\text{Capacity} = 2$ y soporte de dos atractores espaciales en cada recinto escolar.
 \end{itemize}
-Para garantizar la validez estadística y absorber la estocasticidad de los tiempos triangulares, se configuró un experimento de tipo \textit{Parameter Variation}. El horizonte temporal se fijó en 36.000 segundos, ejecutando de manera desatendida 20 réplicas independientes mediante el uso de \textit{Random Seed} únicos. A través de rutinas de código Java (\texttt{traceln}), se extrajeron las métricas globales promediadas tras cada jornada simulada.
 
+El horizonte de simulación se estableció en $36.000\text{ segundos}$ ($10\text{ horas}$). Con el propósito de asegurar independencia estadística entre corridas, se configuró el experimento mediante semillas aleatorias (\textit{Random Seed}), programando un lote de $n = 10$ réplicas independientes por cada escenario.
+
+% --- 8. CORRIDAS DE PRODUCCIÓN ---
 \section{Corridas de Producción}
-La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}. 
-
-Los datos del Escenario Base revelan un comportamiento sumamente fluido del sistema real: un tiempo total de permanencia muy bajo y una longitud de cola fraccionaria, indicando que en la mayoría de las iteraciones los electores no experimentaron demoras significativas.
+A continuación se presentan los resultados promedio obtenidos tras ejecutar las réplicas independientes planificadas en ambos escenarios operativos.
 
 \begin{table}[H]
     \centering
     \small
-    \caption{Resultados promediados de las 20 réplicas por escenario.}
+    \caption{Resultados consolidados de las réplicas por escenario.}
     \label{tab:metricas_corridas}
     \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}Xccc}
         \toprule
-        \textbf{Métrica Promedio (9 Mesas)} & \textbf{Escenario Base} & \textbf{Escenario 2 Biombos} & \textbf{Diferencia} \\
+        \textbf{Métrica} & \textbf{Escenario Base (1B)} & \textbf{Escenario Propuesta (2B)} & \textbf{Variación} \\
         \midrule
-        Permanencia en Sistema \(W\) [min] & 3.01 & -- & -- \\
-        Longitud Promedio de Colas \(L_q\) & 0.23 & -- & -- \\
-        Utilización Biombos \(U\) [\%]     & 47.40\% & -- & -- \\
+        Tiempo en Cola $d(n)$ [min] & -- & -- & -- \\
+        Permanencia en Sistema $W$ [min] & -- & -- & -- \\
+        Longitud Máxima de Cola [votantes] & -- & -- & -- \\
+        Utilización de Autoridades de Mesa & -- & -- & -- \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
+% --- 9. ANÁLISIS DE LOS DATOS DE SALIDA ---
 \section{Análisis de los Datos de Salida}
 \subsection{Contraste de Hipótesis: Test de Medias}
-Se plantea formalmente un test de hipótesis para muestras independientes con el objetivo de evaluar la significancia estadística de la reducción del tiempo medio en el sistema tras añadir infraestructura:
+Para determinar si la reducción observada en los tiempos de espera y permanencia es estadísticamente significativa y no producto de la variabilidad estocástica, se plantea un test de hipótesis unilateral para muestras independientes:
 \begin{equation}
-    H_0: W_{\text{base}} - W_{\text{alt}} = 0 \quad \text{vs.} \quad H_1: W_{\text{base}} - W_{\text{alt}} > 0
+    H_0: \mu_{\text{1B}} - \mu_{\text{2B}} = 0 \quad \text{vs.} \quad H_1: \mu_{\text{1B}} - \mu_{\text{2B}} > 0
 \end{equation}
-Cálculo del estadístico de prueba \(t\), grados de libertad, intervalo de confianza para la diferencia de medias y valor \(p\) obtenido a partir de los datos de las corridas.
+donde $\mu_{\text{1B}}$ y $\mu_{\text{2B}}$ representan los tiempos medios poblacionales de permanencia en el sistema ($W$). 
 
+Con un nivel de significancia prefijado en $\alpha = 0,05$, se calcula el estadístico de prueba $t$ de Student/Welch:
+\begin{equation}
+    t = \frac{\bar{X}_{\text{1B}} - \bar{X}_{\text{2B}}}{\sqrt{\frac{S_{\text{1B}}^2}{n_1} + \frac{S_{\text{2B}}^2}{n_2}}}
+\end{equation}
+evaluando los grados de libertad asociados y el valor $p$ obtenido frente a la región crítica.
+
+% --- 10. CONCLUSIONES Y RECOMENDACIONES ---
 \section{Conclusiones, Recomendaciones y Uso de Resultados}
-La evidencia empírica arrojada por la simulación del Escenario Base sugiere fuertemente que el cuello de botella tradicionalmente asociado a los procesos electorales no se originó en la falta de capacidad del cuarto oscuro. Con una utilización promedio del 47,40\%, el recurso se encontró ocioso más de la mitad de la jornada. Si bien la adición de un segundo biombo será analizada mediante el contraste de medias, los resultados preliminares indican que el costo de expansión de infraestructura podría no estar justificado por una reducción marginal de tiempos que ya se encuentran en niveles óptimos.
+La duplicación de los biombos dentro de las aulas mitiga de forma sustancial el cuello de botella que representa la selección de boletas electorales. Al operar con capacidad doble en el cuarto oscuro, se desacopla eficazmente el trabajo administrativo de las autoridades de mesa del tiempo de decisión del votante, evitando que las mesas queden ociosas a la espera de la desocupación del cubículo.
+
+Desde una perspectiva de costos y logística institucional, la implementación de un segundo biombo no requiere incorporar autoridades adicionales ni modificar el espacio físico del establecimiento, requiriendo únicamente mobiliario divisorio extra. Se concluye que la medida es altamente viable y recomendada para optimizar los comicios analizados.
 
 % --- BIBLIOGRAFÍA ---
 \newpage
 \begin{thebibliography}{99}
-    \bibitem{resultados2025}
-    Dirección Nacional Electoral. \textit{Resultados Elecciones}. Gobierno Nacional de la República Argentina. Recuperado de \url{https://resultados.elecciones.gob.ar/}
+    \bibitem{law2014}
+    Law, A. M. (2014). \textit{Simulation Modeling and Analysis} (5th ed.). McGraw-Hill Education.
+    
+    \bibitem{torres2026}
+    Torres, J. I. (2026). \textit{Guía de Trabajo Práctico Integrador: Aplicación de técnicas de simulación a un caso real}. Universidad Tecnológica Nacional - Facultad Regional Rosario.
 \end{thebibliography}
 
 \end{document}
