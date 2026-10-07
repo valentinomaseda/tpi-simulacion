@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.7)  6 OCT 2026 15:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.7)  7 OCT 2026 10:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -441,7 +441,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.50 \newpage
-              [1] [2] [3] [4] [5] [6] (informe.aux
+              [1] [2] [3] [4] [5] [6] [7] (informe.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -449,21 +449,25 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `informe.out' has not changed.
 (rerunfilecheck)             Checksum: 46FAE58D8E9A36A67EB78C197DF70EAB;2486.
  ) 
 Here is how much of TeX's memory you used:
- 12125 strings out of 467870
- 188942 string characters out of 5418356
- 622674 words of memory out of 5000000
- 40818 multiletter control sequences out of 15000+600000
+ 12127 strings out of 467870
+ 188970 string characters out of 5418356
+ 624710 words of memory out of 5000000
+ 40820 multiletter control sequences out of 15000+600000
  638146 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,793b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\valen\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\valen\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm2074.pk><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/valen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on informe.pdf (7 pages, 185297 bytes).
+Output written on informe.pdf (8 pages, 190502 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
+ 184 PDF objects out of 1000 (max. 8388607)
  26 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
