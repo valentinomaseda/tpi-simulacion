@@ -118,7 +118,14 @@ A partir de estos registros empíricos, los ausentes fueron aislados para config
 Dada la limitación de los bloques derivadores de AnyLogic a un máximo de 5 salidas, el ruteo hacia las 9 mesas se modeló en cascada. El primer derivador distribuye el flujo a las mesas 38 a 41 y envía el remanente (1.241 agentes) a un segundo bloque. Las probabilidades de ruteo se configuraron matemáticamente utilizando fracciones exactas según los datos históricos (por ejemplo, el primer bloque deriva a la Mesa 38 con una probabilidad de \(243/2199\), mientras que el segundo derivador asigna a la Mesa 44 con una probabilidad de \(268/1241\)). Esto garantiza que mesas históricamente concurridas sufran un estrés proporcional en la simulación.
 
 \section{Validación del Modelo Conceptual}
-Diagramas de flujo del proceso de votación, revisión conceptual del desacople entre acreditación, ingreso al biombo/cuarto oscuro y firma del padrón frente a la dinámica real del establecimiento.
+El modelo conceptual del sistema de votación se estructuró considerando la disciplina de colas FIFO y el desacople físico y temporal entre la acreditación en la mesa y la emisión del voto en el cuarto oscuro. En la Figura \ref{fig:modelo_conceptual} se detalla el diagrama de flujo lógico, validado conceptualmente para representar con exactitud las instancias que atraviesa cada elector dentro del establecimiento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{diagrama_conceptual.png}
+    \caption{Diagrama de flujo del modelo conceptual del proceso de votación.}
+    \label{fig:modelo_conceptual}
+\end{figure}
 
 \section{Construcción y Verificación del Programa}
 La implementación se desarrolló en el software AnyLogic utilizando la \textit{Process Modeling Library}. El flujo consta de la triada Acreditación, Voto y Egreso (bloques \texttt{Delay}) conectados por traslados (\texttt{MoveTo}) y colas (\texttt{Queue}). 
