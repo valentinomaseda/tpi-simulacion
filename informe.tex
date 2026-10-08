@@ -54,40 +54,39 @@
 
 Los procesos electorales representan un desafío logístico de gran magnitud, donde la eficiencia en la gestión del flujo de personas es fundamental para garantizar una jornada cívica ordenada y sin contratiempos. Históricamente, uno de los problemas más recurrentes en los centros de votación es la formación de largas filas y la congestión física en los pasillos, factores que generan malestar en los electores y dificultan la transitabilidad. A menudo, se presume intuitivamente que el cuello de botella central del sistema radica en la disponibilidad del cuarto oscuro (o biombo) durante el acto de selección de boletas.
 
-El presente Trabajo Práctico Integrador tiene como propósito analizar empíricamente esta problemática en el centro de votación emplazado en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. Mediante la aplicación de técnicas de microsimulación peatonal de eventos discretos, se busca representar la dinámica física y espacial del establecimiento durante una jornada electoral de 10 horas ininterrumpidas, permitiendo evaluar las aglomeraciones y estudiar el sistema sin interferir en su funcionamiento natural.
+El presente Trabajo Práctico Integrador tiene como propósito analizar empíricamente esta problemática en el centro de votación emplazado en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes[cite: 3]. Mediante la aplicación de técnicas de microsimulación peatonal de eventos discretos, se busca representar la dinámica física y espacial del establecimiento durante una jornada electoral acotada a las 5 horas de mayor afluencia (medio turno), permitiendo evaluar las aglomeraciones y estudiar el sistema sin interferir en su funcionamiento natural.
 
-Para garantizar la fidelidad matemática del modelo, el caudal de la demanda se obtuvo de los escrutinios oficiales publicados en el portal \textit{Resultados Elecciones} del Gobierno Nacional (\url{https://resultados.elecciones.gob.ar/}). Asimismo, para lograr una representación espacial precisa, se utilizaron los planos arquitectónicos de la institución, mapeando con exactitud los pasillos, accesos y la disposición física de las 9 mesas electorales.
+Para garantizar la fidelidad matemática del modelo, el caudal de la demanda se obtuvo de los escrutinios oficiales publicados en el portal \textit{Resultados Elecciones} del Gobierno Nacional (\url{https://resultados.elecciones.gob.ar/})[cite: 3]. Asimismo, para lograr una representación espacial precisa, se utilizaron los planos arquitectónicos de la institución, mapeando con exactitud los pasillos, accesos y la disposición física de las 9 mesas electorales[cite: 3].
 
 \vspace{0.5cm}
 \noindent \textbf{Objetivos del Estudio}
 \begin{itemize}
-    \item \textbf{Objetivo General:} Desarrollar un modelo de simulación validado en AnyLogic que reproduzca el flujo de votantes en la escuela, diagnosticando la capacidad del sistema actual y la congestión física, para evaluar la factibilidad técnica de alternativas de mejora estructural.
+    \item \textbf{Objetivo General:} Desarrollar un modelo de simulación validado en AnyLogic que reproduzca el flujo de votantes en la escuela, diagnosticando la capacidad del sistema actual y la congestión física, para evaluar la factibilidad técnica de alternativas de mejora estructural[cite: 3].
     \item \textbf{Objetivos Específicos:}
     \begin{itemize}
-        \item Caracterizar estadísticamente el comportamiento de los arribos y los tiempos de espera por fases (acreditación, emisión del voto y egreso) para las 9 mesas del recinto.
-        \item Identificar el verdadero cuello de botella del sistema y mapear la densidad espacial (\textit{Heatmap}) para evidenciar la congestión física en los pasillos.
-        \item Contrastar el escenario base (un biombo por mesa) contra una propuesta de intervención física (dos biombos en paralelo por mesa) mediante réplicas automatizadas y un test de comparación de medias.
+        \item Caracterizar estadísticamente el comportamiento de los arribos y los tiempos de espera por fases (acreditación, emisión del voto y egreso) para las 9 mesas del recinto[cite: 3].
+        \item Identificar el verdadero cuello de botella del sistema y mapear la densidad espacial (\textit{Heatmap}) para evidenciar la congestión física en los pasillos[cite: 3].
+        \item Contrastar el escenario base (un biombo por mesa) contra una propuesta de intervención física (dos biombos en paralelo por mesa) mediante réplicas automatizadas y un test de comparación de medias[cite: 3].
     \end{itemize}
 \end{itemize}
 
 \vspace{0.5cm}
 \noindent \textbf{Alcance Acotado}
 
-El estudio se delimita espacial y temporalmente al recinto mencionado, abarcando exclusivamente a los electores empadronados desde la mesa 38 hasta la 46. El horizonte de simulación se restringe a las 5 horas de mayor afluencia (horario pico). Esta acotación responde a una limitación técnica de la licencia gratuita \textit{Personal Learning Edition} de AnyLogic, la cual restringe la ejecución continua de la \textit{Pedestrian Library} a un máximo de 5 horas de tiempo simulado. Se excluyen del análisis variables externas no cuantificables como demoras excepcionales por reposición de boletas o contingencias climáticas.
+El estudio se delimita espacial y temporalmente al recinto mencionado, abarcando exclusivamente a los electores empadronados desde la mesa 38 hasta la 46[cite: 3]. El horizonte de simulación se restringe a las 5 horas de mayor afluencia (horario pico), modelando el arribo de aproximadamente 1.100 electores. Esta acotación responde a una limitación técnica de la licencia gratuita \textit{Personal Learning Edition} de AnyLogic, la cual restringe la ejecución continua de la \textit{Pedestrian Library} a un máximo de 5 horas de tiempo simulado[cite: 3]. Se excluyen del análisis variables externas no cuantificables como demoras excepcionales por reposición de boletas o contingencias climáticas[cite: 3].
 
 \vspace{0.5cm}
 \noindent \textbf{Métricas de Desempeño a Evaluar}
 
 Para dictaminar la eficiencia operativa del sistema actual y de los escenarios propuestos, el análisis se fundamentará en los siguientes indicadores:
 \begin{itemize}
-    \item \textbf{Tiempo de permanencia en el sistema ($W$):} El lapso total promedio que invierte un elector desde el instante en que cruza la puerta del establecimiento hasta que se retira.
-    \item \textbf{Tiempos de espera por fase ($W_q$):} Desglose cronometrado de las demoras experimentadas en las filas de Acreditación, Biombo y Egreso.
-    \item \textbf{Congestión Espacial Física:} Evaluación visual y analítica de los embotellamientos en los pasillos a través del Mapa de Densidad Peatonal (\textit{Ped Density Map}).
+    \item \textbf{Tiempo de permanencia en el sistema ($W$):} El lapso total promedio que invierte un elector desde el instante en que cruza la puerta del establecimiento hasta que se retira[cite: 3].
+    \item \textbf{Tiempos de espera por fase ($W_q$):} Desglose cronometrado de las demoras experimentadas en las filas de Acreditación, Biombo y Egreso[cite: 3].
+    \item \textbf{Congestión Espacial Física:} Evaluación visual y analítica de los embotellamientos en los pasillos a través del Mapa de Densidad Peatonal (\textit{Ped Density Map})[cite: 3].
 \end{itemize}
 
 \section{Recolección de Datos y Definición del Modelo}
-Para la caracterización del centro de votación, se relevaron los datos correspondientes a las 9 mesas electorales asignadas al establecimiento (mesas 38 a 46). El padrón electoral totalizó 3.146 electores habilitados, con una concurrencia efectiva de 2.199 votantes durante la jornada (un 69,90\% de participación promedio), según se detalla en la Tabla~\ref{tab:participacion_mesas}.
-
+Se establecieron dos franjas: un arranque moderado durante las primeras dos horas (100 personas por hora) y un pico pronunciado desde media mañana hasta el cierre del turno (300 personas por hora durante 3 horas), sumando así los 1.100 electores.
 \begin{table}[H]
     \centering
     \small
@@ -96,7 +95,7 @@ Para la caracterización del centro de votación, se relevaron los datos corresp
     \label{tab:participacion_mesas}
     \begin{tabular}{ccccc}
         \toprule
-        \textbf{Mesa} & \textbf{Electores en Padrón} & \textbf{Total Votantes} & \textbf{Ausentes} & \textbf{\% Participación} \\
+        \textbf{Mesa} & \textbf{Electores en Padrón} & \textbf{Total Votantes (10hs)} & \textbf{Ausentes} & \textbf{\% Participación} \\
         \midrule
         38 & 348 & 243 & 105 & 69,83\% \\
         39 & 350 & 235 & 115 & 67,14\% \\
@@ -113,10 +112,10 @@ Para la caracterización del centro de votación, se relevaron los datos corresp
     \end{tabular}
 \end{table}
 
-A partir de estos registros empíricos, los ausentes fueron aislados para configurar una demanda inyectada de exactamente 2.199 agentes. En la simulación, esto se materializó mediante un bloque \texttt{PedSource} definido por una tasa de arribos teórica ($\lambda = 219,9$ votantes/hora). El ruteo de electores hacia las 9 mesas se configuró matemáticamente utilizando fracciones exactas según la concurrencia histórica, garantizando que mesas como la 44 sufran un nivel de tráfico y estrés proporcional a la realidad.
+A partir de estos registros empíricos, los ausentes fueron aislados para configurar una demanda inyectada de 1.100 agentes durante las 5 horas simuladas. Para modelar con fidelidad la dinámica de una elección real, no se utilizó una tasa de arribo constante. En su lugar, la inyección de entidades se gestionó mediante un objeto \texttt{Schedule} configurado con intervalos (\textit{Rate Schedule}), emulando el comportamiento fluctuante de la demanda. Se establecieron tres franjas: un arranque moderado (100 personas en la primera hora), un pico pronunciado a media mañana (300 personas por hora durante 3 horas) y un descenso hacia el mediodía (100 personas en la última hora), sumando así los 1.100 electores. El ruteo de electores hacia las 9 mesas se configuró matemáticamente utilizando fracciones exactas según la concurrencia histórica, garantizando que mesas como la 44 sufran un nivel de tráfico y estrés proporcional a la realidad[cite: 3].
 
 \section{Validación del Modelo Conceptual}
-El modelo conceptual del sistema se estructuró dividiendo la experiencia del elector en tres interacciones físicas sucesivas con la mesa asignada. Este desacople permite reflejar la dinámica real donde un votante debe realizar una fila para validar su identidad, trasladarse a un espacio privado, y finalmente aguardar nuevamente ante las autoridades para ingresar su sobre en la urna. En la Figura \ref{fig:modelo_conceptual} se detalla el diagrama de flujo lógico validado para las entidades (electores) dentro del establecimiento.
+El modelo conceptual del sistema se estructuró dividiendo la experiencia del elector en tres interacciones físicas sucesivas con la mesa asignada[cite: 3]. Este desacople permite reflejar la dinámica real donde un votante debe realizar una fila para validar su identidad, trasladarse a un espacio privado, y finalmente aguardar nuevamente ante las autoridades para ingresar su sobre en la urna[cite: 3]. En la Figura \ref{fig:modelo_conceptual} se detalla el diagrama de flujo lógico validado para las entidades (electores) dentro del establecimiento[cite: 3].
 
 \begin{figure}[H]
     \centering
@@ -140,23 +139,23 @@ Para cuantificar los tiempos muertos y las demoras, cada agente (\texttt{Votante
 \end{figure}
 
 \section{Ejecuciones Piloto}
-Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre las líneas de servicio (\textit{Service with Lines}), corroborar la detección de colisiones físicas en los pasillos y confirmar el freno algorítmico exacto tras el cumplimiento de las 10 horas (36.000 segundos) operativas.
+Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre las líneas de servicio (\textit{Service with Lines}), corroborar la detección de colisiones físicas en los pasillos y confirmar el freno algorítmico exacto tras el cumplimiento de las 5 horas (18.000 segundos) operativas.
 
 \section{Validación del Modelo Programado}
-Contraste del modelo base frente a la participación real y los tiempos percibidos. Se realizó una inspección visual 3D del flujo continuo para confirmar la correcta distribución espacial de los peatones, el funcionamiento de las áreas de espera y la capacidad máxima restrictiva de un elector a la vez por cuarto oscuro.
+Contraste del modelo base frente a la participación real y los tiempos percibidos[cite: 3]. Se realizó una inspección visual 3D del flujo continuo para confirmar la correcta distribución espacial de los peatones, el funcionamiento de las áreas de espera y la capacidad máxima restrictiva de un elector a la vez por cuarto oscuro[cite: 3].
 
 \section{Diseño de Experimentos}
-Se definieron dos configuraciones estructurales para el análisis de capacidad y congestión:
+Se definieron dos configuraciones estructurales para el análisis de capacidad y congestión[cite: 3]:
 \begin{itemize}
-    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral (\texttt{Capacity = 1}).
-    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa (\texttt{Capacity = 2}), adaptando geométricamente el \textit{Polygonal Node}.
+    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral (\texttt{Capacity = 1})[cite: 3].
+    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa (\texttt{Capacity = 2}), adaptando geométricamente el \textit{Polygonal Node}[cite: 3].
 \end{itemize}
 
-Para garantizar la validez estadística y absorber la variabilidad estocástica, se configuró un experimento de tipo \textit{Parameter Variation}. El horizonte temporal se fijó en 5 horas (18.000 segundos) correspondientes a la franja de mayor demanda. Aunque esta acotación temporal es una restricción forzada por el límite del programa, resulta metodológicamente ideal para este Trabajo Práctico Integrador, ya que permite someter al modelo al período de máxima exigencia operativa, garantizando que la evaluación de los cuellos de botella y las aglomeraciones se realice bajo las condiciones más críticas del sistema.
+Para garantizar la validez estadística y absorber la variabilidad estocástica, se configuró un experimento de tipo \textit{Parameter Variation}[cite: 3]. El horizonte temporal se fijó en 5 horas (18.000 segundos) correspondientes a la franja de mayor demanda[cite: 3]. Aunque esta acotación temporal es una restricción forzada por el límite del programa, resulta metodológicamente ideal para este Trabajo Práctico Integrador, ya que permite someter al modelo al período de máxima exigencia operativa, garantizando que la evaluación de los cuellos de botella y las aglomeraciones se realice bajo las condiciones más críticas del sistema[cite: 3].
 \section{Corridas de Producción}
-La consolidación de las 20 réplicas independientes ejecutadas en el simulador para el Escenario Base arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}.
+La consolidación de las 20 réplicas independientes ejecutadas en el simulador para el Escenario Base arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}[cite: 3].
 
-Los resultados indican que, durante el horario de mayor estrés, el tiempo de permanencia global en la escuela promedia los 6,08 minutos. Sorprendentemente, el desglose de demoras revela que el mayor cuello de botella no recae exclusivamente sobre la ocupación del cuarto oscuro, sino sobre el trámite de acreditación inicial en la mesa, el cual acumula la mayor espera promedio (2,36 minutos).
+Los resultados indican que, durante el horario de mayor estrés, el tiempo de permanencia global en la escuela promedia los 6,08 minutos[cite: 3]. Sorprendentemente, el desglose de demoras revela que el mayor cuello de botella no recae exclusivamente sobre la ocupación del cuarto oscuro, sino sobre el trámite de acreditación inicial en la mesa, el cual acumula la mayor espera promedio (2,36 minutos)[cite: 3].
 
 \begin{table}[H]
     \centering
@@ -176,18 +175,50 @@ Los resultados indican que, durante el horario de mayor estrés, el tiempo de pe
 \end{table}
 
 \section{Análisis de los Datos de Salida}
+
+\subsection{Análisis de Congestión Espacial y Tiempos de Espera}
+
+Para evaluar la magnitud de la congestión en el Escenario Base, se procedió a un análisis bidimensional: por un lado, la evaluación visual de la densidad peatonal; y por el otro, la medición estadística de los tiempos de espera en las distintas fases del sistema.
+
+Como se observa en el \textit{Ped Density Map} (Figura \ref{fig:mapa_calor}), durante los picos de afluencia se generan aglomeraciones críticas (zonas de alta densidad en tonalidades cálidas) en los pasillos principales. Estos cuellos de botella se producen debido a que los electores ya acreditados no pueden ingresar al cuarto oscuro ocupado, bloqueando el avance de la fila física frente a la mesa.
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.85\textwidth]{mapa_calor_base.jpg} 
+    \caption{Mapa de densidad peatonal en horario pico (Escenario Base con 1 Biombo). Las zonas de alta densidad coinciden con los sectores de acreditación.} 
+    \label{fig:mapa_calor} 
+\end{figure}
+
+Esta evidencia visual se respalda estocásticamente mediante las 20 réplicas de la simulación. La consolidación de los recolectores de datos internos del modelo (expuestos en el Cuadro \ref{tab:tiempos_fases}) demuestra que la mayor demora no recae en el acto de sufragio per se, sino en el tiempo de espera originado en la acreditación debido a la saturación del sistema.
+
+\begin{table}[htbp] 
+    \centering 
+    \caption{Desglose Estadístico de Tiempos Promedio por Fase (Escenario Base).} 
+    \label{tab:tiempos_fases} 
+    \begin{tabular}{lcc} 
+        \toprule 
+        \textbf{Fase del Proceso} & \textbf{Tiempo Promedio} & \textbf{Desviación / Variabilidad} \\ 
+        \midrule 
+        Espera en Acreditación & 2.36 min & [A completar si calculan desvío] \\ 
+        Tiempo en Cuarto Oscuro (Biombo) & 1.35 min & [A completar] \\ 
+        Tiempo de Egreso (Firma/DNI) & 1.71 min & [A completar] \\ 
+        \midrule
+        \textbf{Tiempo Total en el Sistema ($W$)} & \textbf{6.08 min} & \textbf{--} \\
+        \bottomrule 
+    \end{tabular} 
+\end{table}
+
+La correlación entre el mapa de densidad y los datos cuantitativos confirma que la restricción física de contar con un único biombo por mesa eleva el tiempo promedio de acreditación a $\approx 2.36$ minutos, saturando la capacidad del pasillo y justificando la necesidad de evaluar un escenario alternativo.
+
 \subsection{Contraste de Hipótesis: Test de Medias}
-Se plantea formalmente un test de hipótesis para muestras independientes con el objetivo de evaluar la significancia estadística de la reducción del tiempo medio en el sistema tras añadir infraestructura:
+Se plantea formalmente un test de hipótesis para muestras independientes con el objetivo de evaluar la significancia estadística de la reducción del tiempo medio en el sistema tras añadir infraestructura[cite: 3]:
 \begin{equation}
     H_0: W_{\text{base}} - W_{\text{alt}} = 0 \quad \text{vs.} \quad H_1: W_{\text{base}} - W_{\text{alt}} > 0
 \end{equation}
-Cálculo del estadístico de prueba $t$, grados de libertad, intervalo de confianza para la diferencia de medias y valor $p$ obtenido a partir de los datos empíricos de las corridas.
-
-\subsection{Análisis de Congestión Espacial}
-Adicionalmente, se contrastarán visualmente los Mapas de Densidad Peatonal (\textit{Ped Density Map}) de ambos escenarios para dictaminar si la adición de un segundo biombo logra disipar significativamente la congestión física (\textit{Heatmap}) en los pasillos de circulación común de la escuela.
+Cálculo del estadístico de prueba $t$, grados de libertad, intervalo de confianza para la diferencia de medias y valor $p$ obtenido a partir de los datos empíricos de las corridas[cite: 3].
 
 \section{Conclusiones, Recomendaciones y Uso de Resultados}
-La evidencia empírica preliminar arrojada por la simulación del Escenario Base demuestra que los cuellos de botella electorales son procesos interdependientes. Si bien la adición de un segundo biombo será analizada estadísticamente en la próxima etapa, los datos sugieren que la acreditación de identidad representa un limitante logístico mayor que la propia emisión del voto. Las conclusiones definitivas equilibrarán el costo de instalación de nuevos cuartos oscuros frente a la reducción objetiva del tiempo ocioso y de la congestión física en el establecimiento.
+La evidencia empírica preliminar arrojada por la simulación del Escenario Base demuestra que los cuellos de botella electorales son procesos interdependientes[cite: 3]. Si bien la adición de un segundo biombo será analizada estadísticamente en la próxima etapa, los datos sugieren que la acreditación de identidad representa un limitante logístico mayor que la propia emisión del voto[cite: 3]. Las conclusiones definitivas equilibrarán el costo de instalación de nuevos cuartos oscuros frente a la reducción objetiva del tiempo ocioso y de la congestión física en el establecimiento[cite: 3].
 
 % --- BIBLIOGRAFÍA ---
 \newpage
