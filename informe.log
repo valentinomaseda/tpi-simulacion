@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.6)  10 NOV 2026 21:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.6)  10 NOV 2026 21:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -569,31 +569,35 @@ Overfull \hbox (16.24005pt too wide) in paragraph at lines 99--116
  []
 
 [3]
-<diagrama_conceptual.png, id=101, 1171.37625pt x 5538.6925pt>
+<diagrama_conceptual.png, id=111, 1171.37625pt x 5538.6925pt>
 File: diagrama_conceptual.png Graphic file (type png)
 <use diagrama_conceptual.png>
 Package pdftex.def Info: diagrama_conceptual.png  used on input line 137.
 (pdftex.def)             Requested size: 106.69783pt x 504.46129pt.
  [4] [5 <./diagrama_conceptual.png>]
-<diagrama_anylogic.jpg, id=113, 480.31754pt x 242.38246pt>
+<diagrama_anylogic.jpg, id=123, 480.31754pt x 242.38246pt>
 File: diagrama_anylogic.jpg Graphic file (type jpg)
 <use diagrama_anylogic.jpg>
 Package pdftex.def Info: diagrama_anylogic.jpg  used on input line 151.
 (pdftex.def)             Requested size: 426.79135pt x 215.37206pt.
- [6 <./diagrama_anylogic.jpg>] [7]
-<mapa_calor_base.jpg, id=130, 756.05539pt x 453.0773pt>
+ [6 <./diagrama_anylogic.jpg>]
+Underfull \hbox (badness 6675) in paragraph at lines 195--195
+[]|\OT1/cmr/m/n/10.95 Espera prom. Acre-di-ta-ci^^Son
+ []
+
+[7]
+<mapa_calor_base.jpg, id=145, 756.05539pt x 453.0773pt>
 File: mapa_calor_base.jpg Graphic file (type jpg)
 <use mapa_calor_base.jpg>
-Package pdftex.def Info: mapa_calor_base.jpg  used on input line 207.
+Package pdftex.def Info: mapa_calor_base.jpg  used on input line 214.
 (pdftex.def)             Requested size: 332.89673pt x 199.49289pt.
-<mapa_calor_2b.jpg, id=131, 755.49947pt x 453.0773pt>
+<mapa_calor_2b.jpg, id=146, 755.49947pt x 453.0773pt>
 File: mapa_calor_2b.jpg Graphic file (type jpg)
 <use mapa_calor_2b.jpg>
-Package pdftex.def Info: mapa_calor_2b.jpg  used on input line 214.
+Package pdftex.def Info: mapa_calor_2b.jpg  used on input line 221.
 (pdftex.def)             Requested size: 332.89673pt x 199.64499pt.
-
-[8] [9 <./mapa_calor_base.jpg> <./mapa_calor_2b.jpg>] [10] [11] [12]
-(informe.aux
+ [8] [9 <./mapa_calor_base.jpg> <./mapa_calor_2b.jpg>] [10] [11] [12]
+[13] (informe.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -602,16 +606,16 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `informe.out' has not changed.
-(rerunfilecheck)             Checksum: CA2BAE778833437CD08BCBA774111978;3140.
+(rerunfilecheck)             Checksum: 3E290E2D7C5ED89ECC54202C3D34AC76;3746.
  ) 
 Here is how much of TeX's memory you used:
- 13598 strings out of 467871
- 217729 string characters out of 5417892
- 647650 words of memory out of 5000000
- 42267 multiletter control sequences out of 15000+600000
- 638847 words of font info for 80 fonts, out of 8000000 for 9000
+ 13613 strings out of 467871
+ 217944 string characters out of 5417892
+ 649650 words of memory out of 5000000
+ 42274 multiletter control sequences out of 15000+600000
+ 638146 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1054b,555s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1059b,561s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lenovo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcr
 m1200.pk> <C:\Users\Lenovo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi
 600\tcrm2074.pk><C:/Users/Lenovo/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -630,12 +634,10 @@ onts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lenovo/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lenovo/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Lenovo/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/L
-enovo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C
-:/Users/Lenovo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmt
-t12.pfb>
-Output written on informe.pdf (13 pages, 906105 bytes).
+enovo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on informe.pdf (14 pages, 909991 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 276 PDF objects out of 1000 (max. 8388607)
+ 51 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

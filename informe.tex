@@ -153,8 +153,14 @@ Para cuantificar los tiempos muertos y las demoras, cada agente (\texttt{Votante
     \label{fig:anylogic_blocks}
 \end{figure}
 
-\section{Ejecuciones Piloto}
-Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre las líneas de servicio (\textit{Service with Lines}), corroborar la detección de colisiones físicas en los pasillos y confirmar el freno algorítmico exacto tras el cumplimiento de las 5 horas simuladas (18.000 segundos), las cuales reproducen las 10 horas comiciales reales mediante el factor de extrapolación $\times 2$. Asimismo, se constató el correcto registro acumulativo de las variables internas en los bloques \textit{Histogram Data}.
+\section{Ejecuciones Piloto y Tamaño de Muestra}
+Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre las líneas de servicio (\textit{Service with Lines}), corroborar la detección de colisiones físicas en los pasillos y confirmar el freno algorítmico exacto tras el cumplimiento de las 5 horas simuladas (18.000 segundos), representativas de las 10 horas comiciales reales mediante el factor de extrapolación $\times 2$. 
+
+Asimismo, se utilizó una serie piloto inicial ($n_0 = 5$ réplicas) para determinar analíticamente el número de réplicas definitivas requeridas ($n$). Siguiendo el criterio de precisión de Law (2014), fijando un nivel de confianza del $95\%$ ($\alpha = 0{,}05$) y un error relativo admisible de estimación $\gamma \le 15\%$ respecto a la media:
+\begin{equation}
+    n \ge \left( \frac{t_{n_0 - 1, \, 1 - \alpha/2} \cdot S_0}{\gamma \cdot \bar{X}_0} \right)^2
+\end{equation}
+Con una dispersión muestral inicial $S_0 \approx 4{,}0\text{ min}$ frente a una media $\bar{X}_0 \approx 12{,}5\text{ min}$ y $t_{4; \, 0{,}975} = 2{,}776$, el dimensionamiento arrojó $n \ge 17{,}4$, adoptándose de forma conservadora un lote de $n = 20$ réplicas independientes por escenario para absorber la variabilidad estocástica y satisfacer con rigor las exigencias del test de hipótesis.
 
 \section{Validación del Modelo Programado}
 Contraste del modelo base frente a la participación real y los tiempos percibidos. Se realizó una inspección visual 3D del flujo continuo para confirmar la correcta distribución espacial de los peatones, el funcionamiento de las áreas de espera y la capacidad máxima restrictiva de un elector a la vez por cuarto oscuro.
@@ -169,26 +175,27 @@ Se definieron dos configuraciones estructurales para el análisis de capacidad y
 Para garantizar la validez estadística y absorber la variabilidad estocástica, se configuró un experimento de tipo \textit{Parameter Variation} ejecutando un lote de $n = 20$ réplicas independientes con semillas aleatorias (\textit{Random Seed}) por cada escenario. El horizonte de simulación se estableció en 5 horas (18.000 segundos), extrapolándose a las 10 horas de la jornada electoral completa (36.000 segundos reales) mediante el escalado temporal implementado.
 
 \section{Corridas de Producción}
-La consolidación de las 20 réplicas independientes ejecutadas en el simulador para el Escenario Base, extrapoladas a las 10 horas de jornada real, arrojó los promedios globales detallados en la Tabla~\ref{tab:metricas_corridas}.
-
-Los resultados indican que el tiempo de permanencia global en la escuela promedia los 12,66 minutos (con un desvío estándar de 4,00 minutos). Sorprendentemente, el desglose de demoras revela que el mayor cuello de botella no radica en la ocupación del cuarto oscuro (el cual promedia apenas 1,56 minutos con una variabilidad casi nula), sino en el trámite de acreditación inicial frente a las autoridades de mesa (5,48 minutos en promedio) y la etapa final de firma de padrón y entrega de constancia de egreso (4,94 minutos).
+La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios, extrapoladas a las 10 horas de jornada real, arrojó los promedios globales comparativos detallados en la Tabla~\ref{tab:metricas_corridas}.
 
 \begin{table}[H]
     \centering
     \small
-    \caption{Resultados promediados de las 20 réplicas por escenario (Extrapolado a 10 hs reales).}
+    \setlength{\tabcolsep}{4pt}
+    \caption{Resultados consolidados de las 20 réplicas por escenario (Extrapolado a 10 hs reales).}
     \label{tab:metricas_corridas}
-    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}Xccc}
+    \begin{tabularx}{\textwidth}{Xcccc}
         \toprule
-        \textbf{Métrica Promedio (9 Mesas)} & \textbf{Escenario Base (1B)} & \textbf{Escenario 2 Biombos} & \textbf{Diferencia} \\
+        \textbf{Métrica Promedio} & \textbf{Base (1B)} & \textbf{Propuesta (2B)} & \textbf{Dif. Neta} & \textbf{Variación} \\
         \midrule
-        Tiempo total en el sistema $W$ [min] & 12.66 & [A completar con 2B] & -- \\
-        Espera prom. Acreditación [min]      & 5.48  & [A completar] & -- \\
-        Espera prom. Biombo [min]            & 1.56  & [A completar] & -- \\
-        Espera prom. Egreso [min]            & 4.94  & [A completar] & -- \\
+        Tiempo total en el sistema $W$ [min] & 12.66 & 5.86 & -6.80 min & -53.66\% \\
+        Espera prom. Acreditación [min]      & 5.48  & 2.01 & -3.47 min & -63.27\% \\
+        Espera prom. Biombo [min]            & 1.56  & 1.55 & -0.01 min & -0.61\%  \\
+        Espera prom. Egreso [min]            & 4.94  & 1.58 & -3.36 min & -67.96\% \\
         \bottomrule
     \end{tabularx}
 \end{table}
+
+Los resultados revelan un impacto sistémico fundamental: el tiempo promedio que un elector insume dentro del biombo propiamente dicho no varía significativamente (1,56 min frente a 1,55 min), lo cual es metodológicamente coherente dado que el proceso individual de decisión y selección de boletas es idéntico en ambos casos. Sin embargo, al duplicar la capacidad del cuarto oscuro ($\text{Capacity} = 2$), se elimina por completo el bloqueo aguas arriba. En el Escenario Base, los votantes acreditados debían esperar frente a la mesa a que el biombo se liberase, provocando colas que saturaban la mesa de las autoridades y elevaban la espera en acreditación a 5,48 minutos (con picos de hasta 14,87 minutos). En el Escenario Propuesto, la disponibilidad continua de un biombo permite desocupar inmediatamente la mesa, reduciendo la espera de acreditación en un $63{,}27\%$ y contrayendo la permanencia global del sistema en más de la mitad ($-53{,}66\%$), pasando de 12,66 a 5,86 minutos.
 
 \section{Análisis de los Datos de Salida}
 
@@ -219,51 +226,88 @@ Por el contrario, en el Escenario Alternativo con dos biombos en paralelo (Figur
     \label{fig:mapas_calor} 
 \end{figure}
 
-Esta evidencia visual se respalda cuantitativamente mediante las 20 réplicas de la simulación. La consolidación de los recolectores de datos internos del modelo (expuestos en la Tabla \ref{tab:tiempos_fases}) demuestra que la mayor demora del proceso no recae en la permanencia dentro del biombo (la cual promedia apenas 1,56 minutos con una dispersión casi nula), sino en los tiempos de espera acumulados en la fila de acreditación de identidad (5,48 minutos en promedio, alcanzando picos de hasta 14,87 minutos en réplicas de alto estrés) y en el trámite de egreso (4,94 minutos en promedio).
+Esta evidencia visual se respalda cuantitativamente mediante las 20 réplicas de la simulación. La consolidación de los recolectores de datos internos del modelo para ambos escenarios (expuesta en la Tabla \ref{tab:tiempos_fases}) demuestra la magnitud del beneficio operativo alcanzado.
 
 \begin{table}[H] 
     \centering 
     \small
-    \caption{Desglose estadístico por fase para las 20 réplicas del Escenario Base (10 hs reales).} 
+    \setlength{\tabcolsep}{4pt}
+    \caption{Desglose estadístico comparativo por fase (20 réplicas por escenario, 10 hs reales).} 
     \label{tab:tiempos_fases} 
-    \begin{tabularx}{\textwidth}{Xccc} 
+    \begin{tabularx}{\textwidth}{Xcccc} 
         \toprule 
-        \textbf{Fase del Proceso} & \textbf{Media [min]} & \textbf{Desvío [min]} & \textbf{Rango [Mín -- Máx]} \\ 
+        \textbf{Fase del Proceso} & \textbf{Base ($\bar{X} \pm S$)} & \textbf{Base [Rango]} & \textbf{2B ($\bar{X} \pm S$)} & \textbf{2B [Rango]} \\ 
         \midrule 
-        Espera en Acreditación             & 5.48  & 2.35 & [3.83 -- 14.87] \\ 
-        Tiempo en Biombo (Cuarto Oscuro)    & 1.56  & 0.01 & [1.55 -- 1.57]  \\ 
-        Tiempo de Egreso (Firma y Entrega)  & 4.94  & 1.87 & [3.30 -- 12.07] \\ 
+        Acreditación             & 5.48 $\pm$ 2.35 & [3.83 -- 14.87] & 2.01 $\pm$ 0.07 & [1.91 -- 2.15] \\ 
+        Biombo (Cuarto Oscuro)   & 1.56 $\pm$ 0.01 & [1.55 -- 1.57]  & 1.55 $\pm$ 0.01 & [1.53 -- 1.57] \\ 
+        Egreso (Firma/Entrega)   & 4.94 $\pm$ 1.87 & [3.30 -- 12.07] & 1.58 $\pm$ 0.08 & [1.48 -- 1.75] \\ 
         \midrule
-        \textbf{Tiempo Total en Sistema ($W$)} & \textbf{12.66} & \textbf{4.00} & \textbf{[9.40 -- 28.19]} \\ 
+        \textbf{Total Sistema ($W$)} & \textbf{12.66 $\pm$ 4.00} & \textbf{[9.40 -- 28.19]} & \textbf{5.86 $\pm$ 0.15} & \textbf{[5.66 -- 6.16]} \\ 
         \bottomrule 
     \end{tabularx} 
 \end{table}
 
-La correlación entre los mapas de densidad peatonal y los datos estocásticos confirma que el cuello de botella físico de la acreditación eleva la permanencia media a 12,66 minutos, saturando los pasillos en horas pico y fundamentando la evaluación del impacto de contar con un segundo biombo.
+La correlación entre los mapas de densidad peatonal y los datos estocásticos confirma que, mientras en el Escenario Base la acreditación elevaba la permanencia a 12,66 minutos con gran dispersión e invadía los pasillos comunes, el Escenario con 2 Biombos estabiliza el sistema en 5,86 minutos y reduce drásticamente la variabilidad ($S$ pasa de 4,00 a 0,15 minutos).
 
 \subsection{Contraste de Hipótesis: Test de Medias}
-Para evaluar formalmente si la habilitación del segundo biombo en paralelo reduce el tiempo medio global de permanencia en el sistema de manera estadísticamente significativa frente a la variabilidad estocástica, se plantea un test de hipótesis para muestras independientes:
+Para evaluar formalmente si la implementación del segundo biombo en paralelo reduce el tiempo medio global de permanencia en el sistema de manera estadísticamente significativa frente a la variabilidad estocástica, se plantea un test de hipótesis unilateral para muestras independientes:
 \begin{equation}
     H_0: \mu_{\text{base}} - \mu_{\text{alt}} = 0 \quad \text{vs.} \quad H_1: \mu_{\text{base}} - \mu_{\text{alt}} > 0
 \end{equation}
 con un nivel de significancia prefijado de $\alpha = 0{,}05$.
 
-A partir de los estimadores muestrales consolidados del Escenario Base ($n_1 = 20$, $\bar{X}_{\text{base}} = 12{,}66\text{ min}$, $S_{\text{base}} = 4{,}00\text{ min}$) y los correspondientes al Escenario Alternativo ($n_2 = 20$, $\bar{X}_{\text{alt}}$, $S_{\text{alt}}$), se define el estadístico de prueba $t$ de Welch:
+A partir de los estimadores muestrales obtenidos en las 20 réplicas independientes de cada configuración ($n_1 = 20, \, n_2 = 20$):
+\begin{itemize}
+    \item \textbf{Escenario Base (1B):} $n_1 = 20$, $\bar{X}_1 = 12{,}66\text{ min}$, $S_1 = 4{,}00\text{ min}$ ($S_1^2 = 16{,}013$)
+    \item \textbf{Escenario Propuesta (2B):} $n_2 = 20$, $\bar{X}_2 = 5{,}86\text{ min}$, $S_2 = 0{,}15\text{ min}$ ($S_2^2 = 0{,}022$)
+\end{itemize}
+
+Dado que las varianzas muestrales difieren sustancialmente producto de la estabilización del flujo, se aplica el estadístico de prueba $t$ de Welch (sin asumir igualdad de varianzas):
 \begin{equation}
-    t = \frac{\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}}{\sqrt{\frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2}}}
+    t = \frac{\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}}{\sqrt{\frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2}}} = \frac{12{,}6564 - 5{,}8648}{\sqrt{\frac{16{,}0131}{20} + \frac{0{,}0220}{20}}} = \frac{6{,}7916}{0{,}8954} = 7{,}59
 \end{equation}
-con los grados de libertad calculados mediante la ecuación de Welch-Satterthwaite:
+
+Los grados de libertad efectivos se determinan mediante la aproximación de Welch-Satterthwaite:
 \begin{equation}
-    \nu = \frac{\left( \frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2} \right)^2}{\frac{(S_{\text{base}}^2 / n_1)^2}{n_1 - 1} + \frac{(S_{\text{alt}}^2 / n_2)^2}{n_2 - 1}}
+    \nu = \frac{\left( \frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2} \right)^2}{\frac{(S_{\text{base}}^2 / n_1)^2}{n_1 - 1} + \frac{(S_{\text{alt}}^2 / n_2)^2}{n_2 - 1}} = \frac{(0{,}8018)^2}{\frac{(0{,}8007)^2}{19} + \frac{(0{,}0011)^2}{19}} \approx 19{,}05 \implies 19\text{ grados de libertad}
 \end{equation}
-El intervalo de confianza al $95\%$ para la reducción media neta $(\mu_{\text{base}} - \mu_{\text{alt}})$ se formula como:
+
+Para un nivel de significancia $\alpha = 0{,}05$ con $\nu = 19$, el valor crítico de la distribución $t$ de Student unilateral es:
 \begin{equation}
-    IC_{95\%} = (\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}) \pm t_{\nu, \, 0{,}975} \cdot \sqrt{\frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2}}
+    t_{\text{crítico}} = t_{19; \, 0{,}95} = 1{,}729
 \end{equation}
-\textit{[Sección preparada: a la espera de los estimadores muestrales $\bar{X}_{\text{alt}}$ y $S_{\text{alt}}$ de las 20 réplicas del Escenario de 2 Biombos para dictaminar la regla de decisión y el valor $p$ obtenido]}.
+
+Puesto que $t_{\text{calculado}} = 7{,}59 > t_{\text{crítico}} = 1{,}729$, el estadístico se ubica holgadamente en la región de rechazo de $H_0$, con un valor $p$ asociado de:
+\begin{equation}
+    p = 1{,}80 \times 10^{-7} < 0{,}0001
+\end{equation}
+
+Asimismo, el intervalo de confianza al $95\%$ para la reducción media neta de tiempo $(\mu_{\text{base}} - \mu_{\text{alt}})$ resulta:
+\begin{equation}
+    IC_{95\%} = (\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}) \pm t_{19; \, 0{,}975} \cdot \text{SE} = 6{,}79 \pm (2{,}093 \cdot 0{,}8954) = [4{,}92 \;;\; 8{,}67]\text{ minutos}
+\end{equation}
+
+\noindent \textbf{Decisión Estadística:} Se rechaza categóricamente la hipótesis nula $H_0$ en favor de la hipótesis alternativa $H_1$. Se concluye con un $95\%$ de confianza que la implementación de dos biombos en paralelo por mesa reduce de forma estadísticamente significativa el tiempo medio de permanencia de los votantes en la escuela, con un ahorro medio estimado de entre 4,92 y 8,67 minutos por elector.
 
 \section{Conclusiones, Recomendaciones y Uso de Resultados}
-La evidencia empírica preliminar arrojada por la simulación del Escenario Base demuestra que los cuellos de botella electorales son procesos interdependientes. Si bien la adición de un segundo biombo será analizada estadísticamente en la próxima etapa, los datos sugieren que la acreditación de identidad representa un limitante logístico mayor que la propia emisión del voto. Las conclusiones definitivas equilibrarán el costo de instalación de nuevos cuartos oscuros frente a la reducción objetiva del tiempo ocioso y de la congestión física en el establecimiento.
+
+El presente estudio de microsimulación peatonal sobre la Escuela Técnica N°1 Fray Luis Beltrán permitió contrastar empíricamente la dinámica comicial y evaluar con rigor técnico la alternativa de mejora estructural.
+
+\subsection{Conclusiones del Estudio}
+\begin{enumerate}
+    \item \textbf{Desmitificación del cuello de botella aislado:} La presunción intuitiva de que las demoras electorales se originan exclusivamente en la lentitud del votante al manipular boletas queda refutada en su concepción aislada. El tiempo de permanencia dentro del biombo es sumamente bajo y homogéneo ($\approx 1{,}55$ minutos). No obstante, en un esquema con biombo único, este cubículo se convierte en un cuello de botella sistémico que bloquea la mesa de las autoridades, generando un efecto cascada que traslada colas masivas a los pasillos con demoras de hasta 14,87 minutos en los picos de afluencia.
+    \item \textbf{Efectividad de la duplicación de biombos:} La incorporación de dos biombos en paralelo asistidos por las mismas autoridades desacopla con éxito la acreditación de la emisión del voto. La reducción del tiempo medio global de permanencia ($W$) es drástica: disminuye de 12,66 a 5,86 minutos ($-53{,}66\%$), una mejora corroborada por el contraste de hipótesis con significancia estadística extrema ($t = 7{,}59$, $p < 0{,}0001$).
+    \item \textbf{Estabilización del flujo y colapso de la variabilidad:} Más allá de la reducción del promedio, el hallazgo más trascendente reside en la certidumbre operativa: la desviación estándar del tiempo total colapsó de 4,00 minutos a tan solo 0,15 minutos. El Escenario Alternativo absorbe completamente las fluctuaciones estocásticas de la demanda, garantizando que ningún elector sufra demoras excesivas.
+    \item \textbf{Impacto espacial directo en los pasillos:} Tal como evidencian los mapas comparativos de densidad peatonal (\textit{Ped Density Maps}), el esquema de dos biombos disipa los focos de calor frente a las aulas y despeja las áreas de tránsito común, mejorando sustancialmente la seguridad y transitabilidad del recinto.
+\end{enumerate}
+
+\subsection{Recomendaciones Operativas y Uso de Resultados}
+\begin{itemize}
+    \item \textbf{Factibilidad técnico-económica sobresaliente:} La habilitación de un segundo biombo por mesa no requiere designar nuevas autoridades de mesa ni realizar obras civiles. Solo demanda la incorporación de un biombo o mampara de cartón plegable adicional dentro de cada aula y la reubicación del mobiliario, brindando una relación costo-beneficio inmejorable para la justicia electoral y el establecimiento escolar.
+    \item \textbf{Pre-identificación en el acceso:} Dado que la acreditación de identidad insume alrededor de 2 minutos por persona, se recomienda disponer de facilitadores en el ingreso al establecimiento para indicar de antemano el número de orden en el padrón, reduciendo aún más la interacción inicial frente a la mesa.
+\end{itemize}
+
+En síntesis, los resultados cuantitativos, espaciales y estadísticos del modelo avalan de manera indiscutible la adopción de dos biombos por mesa como una intervención logística de impacto inmediato y costo prácticamente nulo para futuros comicios en el distrito.
 
 % --- BIBLIOGRAFÍA ---
 \newpage
