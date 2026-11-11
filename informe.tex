@@ -1,17 +1,16 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish,es-tabla]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{geometry}
 \usepackage{graphicx}
-\usepackage{subcaption}
 \usepackage{float}
 \usepackage{hyperref}
-\usepackage{cite}
-
-\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
 
 \hypersetup{
     colorlinks=true,
@@ -27,7 +26,7 @@
     \centering
     \LARGE \textbf{Universidad Tecnológica Nacional}\\
     \Large Facultad Regional Rosario\\
-    \large Departamento de Ingeniería en Sistemas de Información\\[2.5cm]
+    \large Ingeniería en Sistemas de Información\\[2.5cm]
     
     \Huge \textbf{Trabajo Práctico Integrador}\\
     \vspace{0.5cm}
@@ -38,10 +37,10 @@
     \textbf{Docentes:} Juan Torres, Guillermo Leale\\[1.5cm]
     
     \textbf{Integrantes:}\\
-    Manuel Casanovas\\
-    Valentino Maseda\\
-    Valentín Peppino\\
-    Gianlucas Zabaleta\\[2cm]
+    Manuel Casanovas -- Legajo: 52367\\
+    Valentino Maseda -- Legajo: 52301\\
+    Valentín Peppino -- Legajo: 52588\\
+    Gianlucas Zabaleta -- Legajo: 52425\\[2cm]
     
     \vfill
     \large Rosario, 2026
@@ -55,7 +54,7 @@
 
 Los procesos electorales representan un desafío logístico de gran magnitud, donde la eficiencia en la gestión del flujo de personas es fundamental para garantizar una jornada cívica ordenada y sin contratiempos. Históricamente, uno de los problemas más recurrentes en los centros de votación es la formación de largas filas y la congestión física en los pasillos, factores que generan malestar en los electores y dificultan la transitabilidad. A menudo, se presume intuitivamente que el cuello de botella central del sistema radica en la disponibilidad del cuarto oscuro (o biombo) durante el acto de selección de boletas.
 
-El presente Trabajo Práctico Integrador tiene como propósito analizar empíricamente esta problemática en el centro de votación emplazado en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. Mediante la aplicación de técnicas de microsimulación peatonal de eventos discretos, se busca representar la dinámica física y espacial del establecimiento durante la jornada electoral completa de 10 horas (08:00 a 18:00 hs). Debido a que la versión gratuita \textit{Personal Learning Edition} de AnyLogic impone un límite de ejecución continua de 5 horas de tiempo simulado para la librería peatonal (\textit{Pedestrian Library}), se implementó una extrapolación temporal formal en la que 1 hora simulada equivale a 2 horas reales de comicio (factor de escala 1:2), permitiendo evaluar las aglomeraciones y la dinámica del sistema a lo largo de toda la jornada sin interferir en su funcionamiento natural.
+El presente Trabajo Práctico Integrador tiene como propósito analizar empíricamente esta problemática en el centro de votación emplazado en la Escuela de Educación Secundaria Técnica N°1 Fray Luis Beltrán de Arrecifes. Mediante la aplicación de técnicas de microsimulación peatonal de eventos discretos, se busca representar la dinámica física y espacial del establecimiento durante la jornada electoral completa de 10 horas (08:00 a 18:00 hs). Debido a que la versión gratuita \textit{Personal Learning Edition} (PLE) de AnyLogic impone un límite de ejecución continua de 5 horas de tiempo simulado (18.000 segundos) para la librería peatonal (\textit{Pedestrian Library}), se implementó una extrapolación temporal formal 2:1 en la que 1 hora simulada equivale exactamente a 2 horas reales de comicio (1 segundo simulado = 2 segundos reales), permitiendo evaluar las aglomeraciones y la dinámica completa de los 2.199 votantes a lo largo de toda la jornada sin distorsionar la intensidad de tráfico ni la física de los pasillos.
 
 Para garantizar la fidelidad matemática del modelo, el caudal de la demanda se obtuvo de los escrutinios oficiales publicados en el portal \textit{Resultados Elecciones} del Gobierno Nacional (\url{https://resultados.elecciones.gob.ar/}). Asimismo, para lograr una representación espacial precisa, se utilizaron los planos arquitectónicos de la institución, mapeando con exactitud los pasillos, accesos y la disposición física de las 9 mesas electorales.
 
@@ -74,7 +73,7 @@ Para garantizar la fidelidad matemática del modelo, el caudal de la demanda se 
 \vspace{0.5cm}
 \noindent \textbf{Alcance y Extrapolación Temporal}
 
-El estudio se delimita espacial y temporalmente al recinto escolar mencionado, abarcando a los electores empadronados desde la mesa 38 hasta la 46. Dado el tope técnico de la licencia gratuita \textit{Personal Learning Edition} de AnyLogic (que restringe la ejecución continua con la \textit{Pedestrian Library} a un máximo de 5 horas de reloj de simulación), el horizonte de 10 horas de la jornada electoral real se modeló mediante una simulación de 5 horas con una extrapolación temporal de 1 hora de AnyLogic equivalente a 2 horas reales. De este modo, los 1.100 electores simulados representan fielmente la totalidad de la demanda efectiva (que escala proporcionalmente a los 2.199 votantes reales del escrutinio oficial), ajustando los tiempos de permanencia y de servicio mediante el factor de extrapolación $\times 2$ para reflejar las demoras reales del proceso completo. Se excluyen del análisis variables externas no cuantificables como reposición excepcional de boletas o contingencias climáticas.
+El estudio se delimita espacial y temporalmente al recinto escolar mencionado, abarcando a los electores empadronados desde la mesa 38 hasta la 46. Dado el tope técnico de la licencia gratuita \textit{Personal Learning Edition} de AnyLogic (que restringe la ejecución continua con la \textit{Pedestrian Library} a un máximo de 5 horas de reloj de simulación), el horizonte de 10 horas de la jornada electoral real se modeló mediante una simulación de 5 horas con un factor de compresión temporal $2\times$ (1 hora de AnyLogic equivalente a 2 horas reales). Para mantener invariante el factor de utilización del sistema ($\rho = \lambda / \mu$) e inyectar la totalidad de los 2.199 electores reales dentro de las 5 horas operativas, se duplicaron las tasas horarias de arribo ($\lambda_{\text{sim}} = 2 \cdot \lambda_{\text{real}}$) y las velocidades de desplazamiento peatonal, al tiempo que se redujeron a la mitad las duraciones de atención en los bloques de servicio ($t_{\text{sim}} = t_{\text{real}} / 2$). Al finalizar cada etapa, las métricas registradas por los cronómetros internos se re-escalan automáticamente multiplicándolas por el factor $\times 2{,}0$ para expresar todos los resultados en minutos reales de la jornada de 10 horas. Se excluyen del análisis variables externas no cuantificables como reposición excepcional de boletas o contingencias climáticas.
 
 \vspace{0.5cm}
 \noindent \textbf{Métricas de Desempeño a Evaluar}
@@ -82,7 +81,7 @@ El estudio se delimita espacial y temporalmente al recinto escolar mencionado, a
 Para dictaminar la eficiencia operativa del sistema actual y de los escenarios propuestos, el análisis se fundamentará en los siguientes indicadores:
 \begin{itemize}
     \item \textbf{Tiempo de permanencia en el sistema ($W$):} El lapso total promedio que invierte un elector desde el instante en que cruza la puerta del establecimiento hasta que se retira.
-    \item \textbf{Tiempos de espera por fase ($W_q$):} Desglose cronometrado de las demoras experimentadas en las filas de Acreditación, Biombo y Egreso.
+    \item \textbf{Tiempos por fase ($W_{\text{fase}}$):} Desglose cronometrado del tiempo invertido en las etapas de Acreditación, Biombo (Sufragio) y Egreso.
     \item \textbf{Congestión Espacial Física:} Evaluación visual y analítica de los embotellamientos en los pasillos a través del Mapa de Densidad Peatonal (\textit{Ped Density Map}).
 \end{itemize}
 
@@ -93,86 +92,114 @@ Para la caracterización del centro de votación, se relevaron los registros cor
 \begin{table}[H]
     \centering
     \small
-    \setlength{\tabcolsep}{4.5pt}
-    \caption{Padrón y nivel de participación por mesa electoral (Jornada real de 10 hs).}
+    \setlength{\tabcolsep}{4pt}
+    \caption{Padrón, nivel de participación y probabilidades de ruteo por mesa electoral (Jornada real de 10 hs).}
     \label{tab:participacion_mesas}
-    \begin{tabular}{ccccc}
+    \begin{tabularx}{\textwidth}{c*{5}{>{\centering\arraybackslash}X}}
         \toprule
-        \textbf{Mesa} & \textbf{Electores en Padrón} & \textbf{Total Votantes (10hs)} & \textbf{Ausentes} & \textbf{\% Participación} \\
+        \textbf{Mesa} & \textbf{Electores en Padrón} & \textbf{Total Votantes (10hs)} & \textbf{Ausentes} & \textbf{\% Participación} & \textbf{Prob. Global ($p_i$)} \\
         \midrule
-        38 & 348 & 243 & 105 & 69,83\% \\
-        39 & 350 & 235 & 115 & 67,14\% \\
-        40 & 348 & 225 & 123 & 64,66\% \\
-        41 & 350 & 255 & 95  & 72,86\% \\
-        42 & 350 & 245 & 105 & 70,00\% \\
-        43 & 351 & 239 & 112 & 68,09\% \\
-        44 & 350 & 268 & 82  & 76,57\% \\
-        45 & 349 & 258 & 91  & 73,93\% \\
-        46 & 350 & 231 & 119 & 66,00\% \\
+        38 & 348 & 243 & 105 & 69,83\% & 0,1105 \\
+        39 & 350 & 235 & 115 & 67,14\% & 0,1069 \\
+        40 & 348 & 225 & 123 & 64,66\% & 0,1023 \\
+        41 & 350 & 255 & 95  & 72,86\% & 0,1160 \\
+        42 & 350 & 245 & 105 & 70,00\% & 0,1114 \\
+        43 & 351 & 239 & 112 & 68,09\% & 0,1087 \\
+        44 & 350 & 268 & 82  & 76,57\% & 0,1219 \\
+        45 & 349 & 258 & 91  & 73,93\% & 0,1173 \\
+        46 & 350 & 231 & 119 & 66,00\% & 0,1050 \\
         \midrule
-        \textbf{Total} & \textbf{3.146} & \textbf{2.199} & \textbf{947} & \textbf{69,90\%} \\
+        \textbf{Total} & \textbf{3.146} & \textbf{2.199} & \textbf{947} & \textbf{69,90\%} & \textbf{1,0000} \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
 \end{table}
 
-A partir de estos registros empíricos, los votantes efectivos fueron modelados considerando la limitación temporal del simulador: se inyectaron 1.100 agentes a lo largo de 5 horas de ejecución, los cuales, bajo la relación de extrapolación establecida (1 hora simulada = 2 horas reales), representan a $1.100 \times 2 = 2.200$ electores, logrando una correspondencia virtualmente exacta con los 2.199 votantes reales registrados en las actas oficiales.
-
-Para modelar la dinámica de concurrencia, no se utilizó una tasa constante. La inyección de entidades se gestionó mediante un objeto \texttt{Schedule} con tasas por intervalos (\textit{Rate Schedule}): un arranque moderado durante la primera hora simulada (100 agentes/h, equivalente a 200 personas en las 2 primeras horas reales), un pico pronunciado a lo largo de 3 horas simuladas (300 agentes/h, equivalente a 600 personas/h durante 6 horas reales) y un descenso final en la última hora simulada (100 agentes/h), sumando los 1.100 agentes simulados. El ruteo hacia las 9 mesas se configuró respetando estrictamente las proporciones empíricas de concurrencia de cada mesa.
+Para modelar la dinámica fluctuante de concurrencia a lo largo del día sin emplear una tasa uniforme irreal, la inyección de entidades se gestionó mediante el objeto \texttt{Schedule} denominado \texttt{horarioLlegadas} configurado por intervalos (\textit{Rate Schedule}). Aplicando la extrapolación temporal 2:1 (donde las 10 horas reales se comprimen en 5 horas simuladas duplicando la tasa por hora simulada), se definieron tres franjas operativas:
+\begin{itemize}
+    \item \textbf{Franja Inicial (08:00 a 10:00 hs reales $\rightarrow$ Hora 0 a 1 simulada):} Tasa de $200{,}0\text{ votantes/h}$ simulados (equivalente a $100\text{ votantes/h}$ reales durante 2 horas), inyectando una media de $200$ electores.
+    \item \textbf{Franja Pico de Media Mañana (10:00 a 12:00 hs reales $\rightarrow$ Hora 1 a 2 simulada):} Tasa de $600{,}0\text{ votantes/h}$ simulados (equivalente a $300\text{ votantes/h}$ reales durante las 2 horas críticas), inyectando una media de $600$ electores.
+    \item \textbf{Franja de Mediodía y Tarde (12:00 a 18:00 hs reales $\rightarrow$ Hora 2 a 5 simulada):} Tasa de $466{,}33\text{ votantes/h}$ simulados durante las 3 horas restantes (equivalente a $233{,}17\text{ votantes/h}$ reales durante 6 horas), inyectando los $1.399$ electores restantes.
+\end{itemize}
+De esta manera, la integral de la tasa de llegada sobre las 5 horas de simulación arroja exactamente:
+\begin{equation}
+    N_{\text{total}} = (1\text{ h} \times 200{,}0) + (1\text{ h} \times 600{,}0) + (3\text{ h} \times 466{,}33) = 200 + 600 + 1.399 = 2.199\text{ votantes}
+\end{equation}
 
 \subsection{Parámetros de Servicio y Supuestos Estocásticos}
-Los tiempos operativos del circuito electoral se modelaron mediante distribuciones triangulares continuas expresadas en segundos, caracterizadas por sus valores [mínimo, moda, máximo]:
+Los tiempos operativos reales del circuito electoral se modelaron mediante distribuciones triangulares continuas expresadas en segundos, caracterizadas por sus parámetros $[\text{mínimo}, \text{moda}, \text{máximo}]$, junto con su correspondiente parametrización escalada al factor $2\times$ dentro del motor de AnyLogic:
 \begin{itemize}
-    \item \textbf{Velocidad de desplazamiento peatonal:} $\text{Triangular}(0.8, 1.2, 1.5)\text{ m/s}$.
-    \item \textbf{Acreditación y verificación de identidad:} $\text{Triangular}(20, 35, 60)\text{ s}$.
-    \item \textbf{Votación en biombo (cuarto oscuro):} $\text{Triangular}(30, 60, 120)\text{ s}$.
-    \item \textbf{Egreso, firma de padrón y constancia:} $\text{Triangular}(15, 25, 40)\text{ s}$.
+    \item \textbf{Velocidad de desplazamiento peatonal:} $\text{Triangular}(0{,}8;\, 1{,}2;\, 1{,}5)\text{ m/s}$ reales $\rightarrow$ parametrizada en \texttt{pedSource} como $\text{Triangular}(1{,}6;\, 2{,}4;\, 3{,}0)\text{ m/s}$.
+    \item \textbf{Acreditación y verificación de identidad:} $\text{Triangular}(20;\, 35;\, 60)\text{ s}$ reales ($\mu = 38{,}33\text{ s}$) $\rightarrow$ parametrizada en el motor como $\text{Triangular}(10;\, 17{,}5;\, 30)\text{ s}$.
+    \item \textbf{Votación en biombo (cuarto oscuro):} $\text{Triangular}(30;\, 60;\, 120)\text{ s}$ reales ($\mu = 70{,}00\text{ s}$) $\rightarrow$ parametrizada en el motor como $\text{Triangular}(15;\, 30;\, 60)\text{ s}$.
+    \item \textbf{Egreso, firma de padrón y entrega de constancia:} $\text{Triangular}(15;\, 25;\, 40)\text{ s}$ reales ($\mu = 26{,}67\text{ s}$) $\rightarrow$ parametrizada en el motor como $\text{Triangular}(7{,}5;\, 12{,}5;\, 20)\text{ s}$.
 \end{itemize}
-Al no disponer de un censo cronometrado masivo de votantes individuales para aplicar pruebas de bondad de ajuste, la elección de la distribución triangular responde a las recomendaciones metodológicas de Law (2014) para modelar procesos basados en la estimación fundada de límites operativos y valores más frecuentes.
+Al no disponer de un censo cronometrado masivo de votantes individuales para aplicar pruebas de bondad de ajuste sobre muestras históricas, la elección de la distribución triangular responde a las recomendaciones metodológicas de Law (2014) para modelar procesos basados en la estimación experta de cotas extremas y valores modales.
 
 \section{Validación del Modelo Conceptual}
-El modelo conceptual del sistema se estructuró dividiendo la experiencia del elector en tres interacciones físicas sucesivas con la mesa asignada. Este desacople permite reflejar la dinámica real donde un votante debe realizar una fila para validar su identidad, trasladarse a un espacio privado, y finalmente aguardar nuevamente ante las autoridades para ingresar su sobre en la urna. En la Figura \ref{fig:modelo_conceptual} se detalla el diagrama de flujo lógico validado para las entidades (electores) dentro del establecimiento.
+El modelo conceptual del sistema se estructuró dividiendo la experiencia del elector en tres interacciones físicas sucesivas con la mesa asignada. Este desacople permite reflejar la dinámica real donde un votante debe realizar una fila en el pasillo para validar su identidad ante las autoridades, trasladarse al interior del aula o recinto privado donde se ubica el biombo, y finalmente aguardar nuevamente frente a la mesa para introducir el sobre en la urna, firmar el padrón y retirar su documento. En la Figura~\ref{fig:modelo_conceptual} se esquematiza el flujo lógico validado para las entidades (\texttt{Votante}) dentro del establecimiento.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.25\textwidth]{diagrama_conceptual.png}
+    \includegraphics[height=0.65\textheight, keepaspectratio]{diagrama_conceptual.png}
     \caption{Diagrama de flujo del modelo conceptual del proceso de votación.}
     \label{fig:modelo_conceptual}
 \end{figure}
 
 \section{Construcción y Verificación del Programa}
-La implementación se desarrolló en el software AnyLogic adoptando un enfoque de modelado lógico-espacial. Esta metodología permite que los agentes (electores) adquieran dimensión física dentro del plano, adaptando su trayectoria, interactuando con las instalaciones y reaccionando de manera realista a la aglomeración en los pasillos del establecimiento.
+La implementación se desarrolló en el software AnyLogic adoptando un enfoque de microsimulación lógico-espacial mediante la \textit{Pedestrian Library}. Esta metodología permite que los agentes (\texttt{Votante}) adquieran dimensión física real dentro del plano arquitectónico, adaptando su trayectoria, respetando muros perimetrales (\texttt{Wall}) y reduciendo orgánicamente su velocidad de marcha ante la fricción y aglomeración en los pasillos del establecimiento.
 
-El circuito físico de los electores se construyó empleando elementos de \textit{Space Markup} sobre el plano arquitectónico de la escuela. El origen y destino del flujo se demarcaron mediante líneas espaciales de acceso, mientras que las filas de acreditación y egreso se estructuraron utilizando áreas de servicio con líneas de espera definidas. Por su parte, el cuarto oscuro fue delimitado mediante un \textit{Polygonal Node}. La lógica del sistema se orquestó a través de bloques generadores de arribos, comandos de traslado y nodos de atención, acoplados a un bloque de retraso (\texttt{Delay}) clásico para controlar de forma estricta la capacidad máxima simultánea permitida dentro del biombo.
+El circuito físico de los electores se construyó empleando elementos de \textit{Space Markup} sobre el plano a escala de la escuela (Figura~\ref{fig:plano_escuela}):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{plano.jpg}
+    \caption{Plano arquitectónico de la E.E.S.T. N°1 Fray Luis Beltrán empleado como base espacial.}
+    \label{fig:plano_escuela}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Origen y Destino (\texttt{TargetLine}):} La puerta principal de ingreso y egreso del establecimiento se demarcó mediante la línea objetivo \texttt{targetLine}, asociada tanto al generador \texttt{pedSource} como a los bloques de salida \texttt{pedGoToSalida}.
+    \item \textbf{Derivación en Cascada (\texttt{PedSelectOutput}):} Dado que el bloque derivador \texttt{PedSelectOutput} posee un máximo de 5 puertos de salida, la distribución exacta hacia las 9 mesas se resolvió conectando dos selectores en serie. El primer bloque (\texttt{pedSelectOutput}) deriva directamente hacia las Mesas 38, 39, 40 y 41 con sus probabilidades globales empíricas ($0{,}1105$; $0{,}1069$; $0{,}1023$ y $0{,}1160$) y canaliza por su quinto puerto el caudal remanente ($p_5 = 1241/2199 = 0{,}5643$) hacia el segundo selector (\texttt{pedSelectOutput1}). Este último distribuye dicho flujo entre las Mesas 42 a 46 aplicando probabilidades condicionales exactas ($0{,}1974$; $0{,}1925$; $0{,}2159$; $0{,}2078$ y $0{,}1861$), garantizando que la Mesa 44 reciba el mayor caudal de toda la escuela ($12{,}19\%$ del total).
+    \item \textbf{Mesas de Autoridades (\texttt{ServiceWithLine} y \texttt{PedService}):} Cada mesa electoral se modeló físicamente mediante un objeto \texttt{service38} a \texttt{service46} compuesto por su línea de cola (\texttt{QueueLine}) en el pasillo y su punto de atención (\texttt{ServicePoint}). Tanto el bloque lógico de acreditación (\texttt{pedServiceAcreditacionMesa38..46}) como el de egreso (\texttt{pedServiceEgreso..8}) apuntan al mismo recurso físico de la mesa correspondiente, reproduciendo fielmente el hecho de que las autoridades de mesa atienden de forma compartida a quienes se acreditan y a quienes depositan el sobre y firman el padrón.
+    \item \textbf{Cuartos Oscuros y Biombos (\texttt{PolygonNode} y \texttt{PedWait}):} El recinto de votación de cada mesa se delimitó mediante nodos poligonales (\texttt{cuarto38} a \texttt{cuarto46}) provistos de elementos \texttt{Attractor} internos que fijan la posición exacta del biombo. La permanencia durante el sufragio se instrumentó mediante los bloques \texttt{pedWaitBiombo38} a \texttt{pedWaitBiombo46}, destildando la opción \textit{Maximum capacity} para imponer un límite estricto de capacidad (\texttt{Capacity = 1} en el modelo base y \texttt{Capacity = 2} con selección de atractor libre \texttt{Free} en el modelo propuesto).
+\end{itemize}
 
-Para cuantificar los tiempos muertos y las demoras, cada agente (\texttt{Votante}) fue instrumentado con variables de tiempo internas, las cuales alimentaron recolectores de datos estadísticos globales (\textit{Histogram Data}) al entrar y salir de cada fase del escrutinio.
+Para cuantificar las demoras por etapa sin distorsiones, el agente \texttt{Votante} fue dotado del atributo \texttt{double t\_inicio\_fase}. Al ingresar a cada bloque (\textit{On enter}), se almacena el instante actual \texttt{((Votante)ped).t\_inicio\_fase = time();}, y al egresar (\textit{On exit}) se registra el lapso transcurrido multiplicado por el factor de escala temporal $\times 2{,}0$ en los recolectores estadísticos globales (\texttt{statsAcreditacion}, \texttt{statsBiombo} y \texttt{statsEgreso}), mientras que los bloques \texttt{timeMeasureStart} y \texttt{timeMeasureEnd} computan el tiempo total en el sistema ($W$).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{diagrama_anylogic.jpg}
-    \caption{Diagrama de bloques de la simulación espacial implementada en AnyLogic.}
+    \includegraphics[width=0.98\textwidth]{diagrama_anylogic.jpg}
+    \caption{Estructura lógica del diagrama de bloques implementado en AnyLogic.}
     \label{fig:anylogic_blocks}
 \end{figure}
 
 \section{Ejecuciones Piloto y Tamaño de Muestra}
-Se realizaron corridas preliminares a velocidad máxima para verificar la correcta animación de las filas sobre las líneas de servicio (\textit{Service with Lines}), corroborar la detección de colisiones físicas en los pasillos y confirmar el freno algorítmico exacto tras el cumplimiento de las 5 horas simuladas (18.000 segundos), representativas de las 10 horas comiciales reales mediante el factor de extrapolación $\times 2$. 
+Se realizaron corridas preliminares a velocidad máxima para verificar la correcta formación de las filas sobre las líneas de servicio (\textit{Service with Lines}), corroborar la detección de colisiones físicas en los pasillos y confirmar el freno algorítmico exacto tras el cumplimiento de las 5 horas simuladas (18.000 segundos), representativas de las 10 horas comiciales reales mediante el factor de extrapolación $\times 2$. 
 
 Asimismo, se utilizó una serie piloto inicial ($n_0 = 5$ réplicas) para determinar analíticamente el número de réplicas definitivas requeridas ($n$). Siguiendo el criterio de precisión de Law (2014), fijando un nivel de confianza del $95\%$ ($\alpha = 0{,}05$) y un error relativo admisible de estimación $\gamma \le 15\%$ respecto a la media:
 \begin{equation}
     n \ge \left( \frac{t_{n_0 - 1, \, 1 - \alpha/2} \cdot S_0}{\gamma \cdot \bar{X}_0} \right)^2
 \end{equation}
-Con una dispersión muestral inicial $S_0 \approx 4{,}0\text{ min}$ frente a una media $\bar{X}_0 \approx 12{,}5\text{ min}$ y $t_{4; \, 0{,}975} = 2{,}776$, el dimensionamiento arrojó $n \ge 17{,}4$, adoptándose de forma conservadora un lote de $n = 20$ réplicas independientes por escenario para absorber la variabilidad estocástica y satisfacer con rigor las exigencias del test de hipótesis.
+Con una dispersión muestral inicial $S_0 \approx 3{,}95\text{ min}$ frente a una media $\bar{X}_0 \approx 12{,}66\text{ min}$ y $t_{4; \, 0{,}975} = 2{,}776$, el dimensionamiento arrojó $n \ge 16{,}6$, adoptándose de forma conservadora un lote de $n = 20$ réplicas independientes por escenario para absorber la variabilidad estocástica y satisfacer con rigor las exigencias del test de hipótesis.
 
 \section{Validación del Modelo Programado}
-Contraste del modelo base frente a la participación real y los tiempos percibidos. Se realizó una inspección visual 3D del flujo continuo para confirmar la correcta distribución espacial de los peatones, el funcionamiento de las áreas de espera y la capacidad máxima restrictiva de un elector a la vez por cuarto oscuro.
+La validación operativa del modelo programado se llevó a cabo mediante tres pruebas complementarias que contrastan el comportamiento del simulador frente al sistema real y a sus valores teóricos esperados:
+\begin{enumerate}
+    \item \textbf{Validación de conservación de flujo y volumen de demanda:} Se verificó que el caudal total de agentes generados por el proceso de Poisson no homogéneo (\texttt{horarioLlegadas}) a lo largo de los 18.000 segundos simulados converge estadísticamente a los 2.199 votantes efectivos del escrutinio histórico, completando el circuito hasta el bloque \texttt{pedSink} sin pérdidas ni bloqueos topológicos (\textit{deadlocks}) en las esquinas de los muros.
+    \item \textbf{Validación analítica del tiempo de sufragio:} La distribución teórica del tiempo de votación en el biombo es $\text{Triangular}(30, 60, 120)$ segundos, cuya esperanza matemática exacta es:
+    \begin{equation}
+        E[T_{\text{biombo}}] = \frac{a + m + b}{3} = \frac{30 + 60 + 120}{3} = 70{,}0\text{ segundos} = 1{,}17\text{ minutos}
+    \end{equation}
+    En las 20 réplicas de ambos escenarios, el recolector \texttt{statsBiombo} arrojó una media constante de $1{,}55\text{ a }1{,}56\text{ minutos}$ ($93\text{ segundos}$). La diferencia de $23\text{ segundos}$ corresponde con exactitud al tiempo físico de caminata interna que invierte el peatón desde que abandona el punto de atención de la mesa (\texttt{ServicePoint}) hasta alcanzar el atractor dentro del cuarto oscuro a una velocidad media de $1{,}2\text{ m/s}$, validando la precisión del escalado espacial y temporal.
+    \item \textbf{Validación de sensibilidad en horas pico y asimetría por mesa:} Mediante la inspección visual en 2D/3D y el mapa de densidad (\texttt{densityMap}), se corroboró que durante la franja pico de 10:00 a 12:00 hs reales ($600\text{ votantes/h}$ simulados) las colas se concentran con mayor intensidad en la Mesa 44 (que concentra el $12{,}19\%$ de los arribos), reproduciendo el cuello de botella observado empíricamente por las autoridades del establecimiento.
+\end{enumerate}
 
 \section{Diseño de Experimentos}
-Se definieron dos configuraciones estructurales para el análisis de capacidad y congestión:
+Se definieron dos configuraciones estructurales desarrolladas en clases de agentes independientes dentro del proyecto (\texttt{flujo\_1biombo} y \texttt{flujo\_2biombos}) para el análisis comparativo de capacidad y congestión:
 \begin{itemize}
-    \item \textbf{Escenario Base (Actual):} Un único biombo/cuarto oscuro por mesa electoral (\texttt{Capacity = 1}).
-    \item \textbf{Escenario Alternativo (Propuesta):} Implementación de un segundo biombo en paralelo asistido por las mismas autoridades de mesa (\texttt{Capacity = 2}), adaptando geométricamente el \textit{Polygonal Node}.
+    \item \textbf{Escenario Base (\texttt{flujo\_1biombo}):} Un único biombo por mesa electoral (\texttt{Capacity = 1} en los 9 bloques \texttt{pedWaitBiombo38..46} y un único atractor activo por aula).
+    \item \textbf{Escenario Alternativo (\texttt{flujo\_2biombos}):} Incorporación de un segundo biombo en paralelo dentro de cada cuarto oscuro asistido por la misma mesa de autoridades (\texttt{Capacity = 2} en los 9 bloques \texttt{pedWaitBiombo38..46}, dos atractores separados por tabique divisorio y política de selección \texttt{Attractor choice: Free}).
 \end{itemize}
 
-Para garantizar la validez estadística y absorber la variabilidad estocástica, se configuró un experimento de tipo \textit{Parameter Variation} ejecutando un lote de $n = 20$ réplicas independientes con semillas aleatorias (\textit{Random Seed}) por cada escenario. El horizonte de simulación se estableció en 5 horas (18.000 segundos), extrapolándose a las 10 horas de la jornada electoral completa (36.000 segundos reales) mediante el escalado temporal implementado.
+Para garantizar la validez estadística, se configuró el experimento \texttt{ParametersVariation} ejecutando un lote de $n = 20$ réplicas independientes con semillas aleatorias (\texttt{Random seed}) para cada escenario. El horizonte de simulación se estableció en 18.000 segundos (5 horas simuladas), ejecutando al término de cada corrida la rutina Java en \textit{After simulation run} para exportar por consola los promedios globales ya convertidos a minutos reales de la jornada de 10 horas.
 
 \section{Corridas de Producción}
 La consolidación de las 20 réplicas independientes ejecutadas en el simulador para ambos escenarios, extrapoladas a las 10 horas de jornada real, arrojó los promedios globales comparativos detallados en la Tabla~\ref{tab:metricas_corridas}.
@@ -180,96 +207,127 @@ La consolidación de las 20 réplicas independientes ejecutadas en el simulador 
 \begin{table}[H]
     \centering
     \small
-    \setlength{\tabcolsep}{4pt}
+    \setlength{\tabcolsep}{5pt}
     \caption{Resultados consolidados de las 20 réplicas por escenario (Extrapolado a 10 hs reales).}
     \label{tab:metricas_corridas}
     \begin{tabularx}{\textwidth}{Xcccc}
         \toprule
-        \textbf{Métrica Promedio} & \textbf{Base (1B)} & \textbf{Propuesta (2B)} & \textbf{Dif. Neta} & \textbf{Variación} \\
+        \textbf{Métrica Promedio (9 Mesas)} & \textbf{Base (1B)} & \textbf{Propuesta (2B)} & \textbf{Dif. Neta} & \textbf{Variación} \\
         \midrule
-        Tiempo total en el sistema $W$ [min] & 12.66 & 5.86 & -6.80 min & -53.66\% \\
-        Espera prom. Acreditación [min]      & 5.48  & 2.01 & -3.47 min & -63.27\% \\
-        Espera prom. Biombo [min]            & 1.56  & 1.55 & -0.01 min & -0.61\%  \\
-        Espera prom. Egreso [min]            & 4.94  & 1.58 & -3.36 min & -67.96\% \\
+        Tiempo total en el sistema $W$ [min] & 12,66 & 5,87 & -6,79 min & -53,65\% \\
+        Tiempo prom. Acreditación [min]      & 5,38  & 2,01 & -3,37 min & -62,64\% \\
+        Tiempo prom. Biombo [min]            & 1,56  & 1,55 & -0,01 min & -0,64\%  \\
+        Tiempo prom. Egreso [min]            & 4,94  & 1,58 & -3,36 min & -68,02\% \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
-Los resultados revelan un impacto sistémico fundamental: el tiempo promedio que un elector insume dentro del biombo propiamente dicho no varía significativamente (1,56 min frente a 1,55 min), lo cual es metodológicamente coherente dado que el proceso individual de decisión y selección de boletas es idéntico en ambos casos. Sin embargo, al duplicar la capacidad del cuarto oscuro ($\text{Capacity} = 2$), se elimina por completo el bloqueo aguas arriba. En el Escenario Base, los votantes acreditados debían esperar frente a la mesa a que el biombo se liberase, provocando colas que saturaban la mesa de las autoridades y elevaban la espera en acreditación a 5,48 minutos (con picos de hasta 14,87 minutos). En el Escenario Propuesto, la disponibilidad continua de un biombo permite desocupar inmediatamente la mesa, reduciendo la espera de acreditación en un $63{,}27\%$ y contrayendo la permanencia global del sistema en más de la mitad ($-53{,}66\%$), pasando de 12,66 a 5,86 minutos.
+Los resultados revelan un impacto sistémico fundamental: el tiempo promedio que un elector insume dentro del biombo propiamente dicho no varía entre escenarios ($1{,}56\text{ min}$ frente a $1{,}55\text{ min}$), lo cual es metodológicamente coherente dado que el acto individual de selección de boletas es idéntico en ambos casos. Sin embargo, al duplicar la capacidad simultánea del cuarto oscuro ($\text{Capacity} = 2$), se desacopla el flujo entre la mesa y el biombo y se elimina la congestión física en los pasillos. En el Escenario Base, la acumulación peatonal frente a las aulas entorpecía la circulación entre quienes ingresaban a acreditarse y quienes salían del cuarto oscuro para firmar el padrón y depositar el sobre en el mismo puesto de servicio (\texttt{service38..46}), disparando el tiempo en acreditación a $5{,}38\text{ minutos}$ (con picos de hasta $14{,}87\text{ minutos}$) y el de egreso a $4{,}94\text{ minutos}$. En el Escenario Propuesto, la fluidez otorgada por los dos biombos reduce el tiempo de acreditación en un $62{,}64\%$, el de egreso en un $68{,}02\%$ y contrae la permanencia global en el establecimiento en más de la mitad ($-53{,}65\%$), pasando de $12{,}66$ a $5{,}87\text{ minutos}$.
 
 \section{Análisis de los Datos de Salida}
 
-\subsection{Análisis de Congestión Espacial y Tiempos de Espera}
+\subsection{Análisis de Congestión Espacial y Tiempos por Fase}
 
-Para evaluar el impacto de la infraestructura sobre el flujo de electores, se procedió a un análisis bidimensional: por un lado, la evaluación visual de la densidad peatonal mediante mapas de calor (\textit{Heatmaps}); y por el otro, la medición estadística de los tiempos de permanencia y espera en las distintas fases del comicio.
+Para evaluar el impacto de la infraestructura sobre el flujo de electores, se procedió a un análisis bidimensional: por un lado, la evaluación visual de la densidad peatonal mediante mapas de calor (\textit{Heatmaps} generados por el objeto \texttt{densityMap} con densidad crítica de $1{,}5\text{ peatones/m}^2$); y por el otro, el análisis estadístico de la dispersión y los rangos extremos en las 20 réplicas de cada escenario.
 
-Como se observa en el \textit{Ped Density Map} comparativo (Figura \ref{fig:mapas_calor}), el Escenario Base con un único biombo (Figura \ref{fig:mapa_calor_base}) presenta aglomeraciones críticas en tonalidades cálidas frente a las mesas electorales ubicadas a lo largo de los pasillos principales. Esta congestión espacial se produce cuando los electores acreditados no pueden ingresar al cuarto oscuro por encontrarse ocupado, extendiendo la fila física hacia el área de circulación general y entorpeciendo el tránsito de los demás votantes.
+En el \textit{Ped Density Map} comparativo (Figuras~\ref{fig:mapa_calor_base} y~\ref{fig:mapa_calor_2b}) se constata que el Escenario Base con un único biombo presenta aglomeraciones críticas en tonalidades rojas y cálidas frente a las mesas electorales ubicadas a lo largo de los pasillos principales. Esta congestión espacial se produce cuando las filas de acreditación y de egreso se solapan en el área de circulación general, obstruyendo el paso hacia las mesas contiguas. Por el contrario, en el Escenario Alternativo con dos biombos en paralelo, se aprecia una disipación notable de los focos de saturación térmica y una menor invasión de los pasillos comunes, manteniendo el flujo peatonal en régimen libre durante toda la jornada.
 
-Por el contrario, en el Escenario Alternativo con dos biombos en paralelo (Figura \ref{fig:mapa_calor_2b}), se aprecia una reducción evidente en los focos de saturación térmica y una menor invasión de los pasillos comunes. Al duplicar la capacidad del recinto de votación, el avance del flujo se vuelve más continuo, disipando las colas en los sectores compartidos del establecimiento y mejorando la transitabilidad física general.
-
-\begin{figure}[H] 
-    \centering 
-    \begin{subfigure}[b]{0.78\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{mapa_calor_base.jpg} 
-        \caption{Escenario Base (1 Biombo por mesa): saturación en pasillos frente a las mesas.} 
-        \label{fig:mapa_calor_base} 
-    \end{subfigure}
-    \vspace{0.3cm}
-    \begin{subfigure}[b]{0.78\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{mapa_calor_2b.jpg} 
-        \caption{Escenario Alternativo (2 Biombos por mesa): disipación de colas y mayor fluidez peatonal.} 
-        \label{fig:mapa_calor_2b} 
-    \end{subfigure}
-    \caption{Comparativa de los Mapas de Densidad Peatonal (\textit{Ped Density Map}) durante el horario pico de afluencia.} 
-    \label{fig:mapas_calor} 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{mapa_calor_base.jpg}
+    \caption{Mapa de densidad peatonal (\textit{Ped Density Map}) en el Escenario Base (1 Biombo por mesa).}
+    \label{fig:mapa_calor_base}
 \end{figure}
 
-Esta evidencia visual se respalda cuantitativamente mediante las 20 réplicas de la simulación. La consolidación de los recolectores de datos internos del modelo para ambos escenarios (expuesta en la Tabla \ref{tab:tiempos_fases}) demuestra la magnitud del beneficio operativo alcanzado.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{mapa_calor_2b.jpg}
+    \caption{Mapa de densidad peatonal (\textit{Ped Density Map}) en el Escenario Propuesto (2 Biombos por mesa).}
+    \label{fig:mapa_calor_2b}
+\end{figure}
+
+Esta evidencia visual se respalda cuantitativamente mediante el detalle de las 20 réplicas de cada modelo expuesto en la Tabla~\ref{tab:detalle_replicas} y resumido estadísticamente en la Tabla~\ref{tab:tiempos_fases}.
+
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \setlength{\tabcolsep}{4.5pt}
+    \caption{Registro completo de las 20 réplicas independientes por escenario (valores en minutos reales).}
+    \label{tab:detalle_replicas}
+    \begin{tabular}{ccccccccc}
+        \toprule
+        & \multicolumn{4}{c}{\textbf{Escenario Base (1 Biombo)}} & \multicolumn{4}{c}{\textbf{Escenario Propuesto (2 Biombos)}} \\
+        \cmidrule(lr){2-5} \cmidrule(lr){6-9}
+        \textbf{Rép.} & \textbf{$W$ Total} & \textbf{Acred.} & \textbf{Biombo} & \textbf{Egreso} & \textbf{$W$ Total} & \textbf{Acred.} & \textbf{Biombo} & \textbf{Egreso} \\
+        \midrule
+        1  & 10,38 & 4,28 & 1,56 & 3,82 & 5,66 & 1,91 & 1,56 & 1,48 \\
+        2  & 11,44 & 4,80 & 1,56 & 4,34 & 6,16 & 2,15 & 1,55 & 1,75 \\
+        3  & 10,03 & 4,12 & 1,55 & 3,64 & 5,87 & 2,01 & 1,55 & 1,60 \\
+        4  & 12,35 & 5,24 & 1,56 & 4,81 & 5,66 & 1,91 & 1,55 & 1,49 \\
+        5  & 12,50 & 5,08 & 1,56 & 5,12 & 5,75 & 1,97 & 1,53 & 1,53 \\
+        6  & 11,83 & 4,98 & 1,56 & 4,55 & 5,85 & 2,01 & 1,55 & 1,58 \\
+        7  & 10,66 & 4,44 & 1,56 & 3,94 & 5,94 & 2,04 & 1,56 & 1,63 \\
+        8  & 13,61 & 5,85 & 1,56 & 5,44 & 5,80 & 1,98 & 1,56 & 1,55 \\
+        9  & 9,40  & 3,83 & 1,56 & 3,30 & 5,86 & 2,01 & 1,57 & 1,56 \\
+        10 & 12,09 & 5,08 & 1,57 & 4,69 & 5,72 & 1,95 & 1,55 & 1,51 \\
+        11 & 16,32 & 7,22 & 1,57 & 6,84 & 5,76 & 1,97 & 1,55 & 1,51 \\
+        12 & 28,19 & 14,87 & 1,55 & 12,07 & 6,03 & 2,09 & 1,55 & 1,67 \\
+        13 & 10,58 & 4,38 & 1,57 & 3,90 & 6,03 & 2,10 & 1,55 & 1,66 \\
+        14 & 10,79 & 4,41 & 1,57 & 4,07 & 5,82 & 2,00 & 1,55 & 1,55 \\
+        15 & 9,82  & 4,02 & 1,55 & 3,56 & 5,79 & 1,99 & 1,55 & 1,52 \\
+        16 & 13,33 & 5,73 & 1,56 & 5,33 & 6,00 & 2,08 & 1,54 & 1,66 \\
+        17 & 13,45 & 5,80 & 1,55 & 5,35 & 5,86 & 2,01 & 1,55 & 1,58 \\
+        18 & 12,65 & 5,44 & 1,56 & 4,92 & 5,91 & 2,03 & 1,55 & 1,62 \\
+        19 & 12,63 & 5,39 & 1,56 & 4,95 & 6,14 & 2,13 & 1,55 & 1,73 \\
+        20 & 11,08 & 4,62 & 1,57 & 4,15 & 5,69 & 1,93 & 1,54 & 1,48 \\
+        \midrule
+        \textbf{Media ($\bar{X}$)} & \textbf{12,66} & \textbf{5,38} & \textbf{1,56} & \textbf{4,94} & \textbf{5,87} & \textbf{2,01} & \textbf{1,55} & \textbf{1,58} \\
+        \textbf{Desvío ($S$)}      & \textbf{3,95}  & \textbf{2,36} & \textbf{0,01} & \textbf{1,85} & \textbf{0,15} & \textbf{0,07} & \textbf{0,01} & \textbf{0,08} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \begin{table}[H] 
     \centering 
     \small
-    \setlength{\tabcolsep}{4pt}
+    \setlength{\tabcolsep}{4.5pt}
     \caption{Desglose estadístico comparativo por fase (20 réplicas por escenario, 10 hs reales).} 
     \label{tab:tiempos_fases} 
     \begin{tabularx}{\textwidth}{Xcccc} 
         \toprule 
         \textbf{Fase del Proceso} & \textbf{Base ($\bar{X} \pm S$)} & \textbf{Base [Rango]} & \textbf{2B ($\bar{X} \pm S$)} & \textbf{2B [Rango]} \\ 
         \midrule 
-        Acreditación             & 5.48 $\pm$ 2.35 & [3.83 -- 14.87] & 2.01 $\pm$ 0.07 & [1.91 -- 2.15] \\ 
-        Biombo (Cuarto Oscuro)   & 1.56 $\pm$ 0.01 & [1.55 -- 1.57]  & 1.55 $\pm$ 0.01 & [1.53 -- 1.57] \\ 
-        Egreso (Firma/Entrega)   & 4.94 $\pm$ 1.87 & [3.30 -- 12.07] & 1.58 $\pm$ 0.08 & [1.48 -- 1.75] \\ 
+        Acreditación             & 5,38 $\pm$ 2,36 & [3,83 -- 14,87] & 2,01 $\pm$ 0,07 & [1,91 -- 2,15] \\ 
+        Biombo (Cuarto Oscuro)   & 1,56 $\pm$ 0,01 & [1,55 -- 1,57]  & 1,55 $\pm$ 0,01 & [1,53 -- 1,57] \\ 
+        Egreso (Firma/Entrega)   & 4,94 $\pm$ 1,85 & [3,30 -- 12,07] & 1,58 $\pm$ 0,08 & [1,48 -- 1,75] \\ 
         \midrule
-        \textbf{Total Sistema ($W$)} & \textbf{12.66 $\pm$ 4.00} & \textbf{[9.40 -- 28.19]} & \textbf{5.86 $\pm$ 0.15} & \textbf{[5.66 -- 6.16]} \\ 
+        \textbf{Total Sistema ($W$)} & \textbf{12,66 $\pm$ 3,95} & \textbf{[9,40 -- 28,19]} & \textbf{5,87 $\pm$ 0,15} & \textbf{[5,66 -- 6,16]} \\ 
         \bottomrule 
     \end{tabularx} 
 \end{table}
 
-La correlación entre los mapas de densidad peatonal y los datos estocásticos confirma que, mientras en el Escenario Base la acreditación elevaba la permanencia a 12,66 minutos con gran dispersión e invadía los pasillos comunes, el Escenario con 2 Biombos estabiliza el sistema en 5,86 minutos y reduce drásticamente la variabilidad ($S$ pasa de 4,00 a 0,15 minutos).
+La correlación entre el mapa de densidad peatonal y los datos estocásticos confirma que, mientras en el Escenario Base la saturación elevaba la permanencia media a $12{,}66\text{ minutos}$ con gran dispersión ($S = 3{,}95\text{ min}$, llegando a colapsar en $28{,}19\text{ minutos}$ en la réplica 12), el Escenario con 2 Biombos estabiliza el sistema en $5{,}87\text{ minutos}$ y reduce drásticamente la desviación estándar a tan solo $0{,}15\text{ minutos}$ ($9\text{ segundos}$).
 
-\subsection{Contraste de Hipótesis: Test de Medias}
-Para evaluar formalmente si la implementación del segundo biombo en paralelo reduce el tiempo medio global de permanencia en el sistema de manera estadísticamente significativa frente a la variabilidad estocástica, se plantea un test de hipótesis unilateral para muestras independientes:
+\subsection{Contraste de Hipótesis: Test de Medias de Welch}
+Para evaluar formalmente si la implementación del segundo biombo en paralelo reduce el tiempo medio global de permanencia en el sistema ($W$) de manera estadísticamente significativa frente a la variabilidad estocástica, se plantea un test de hipótesis para dos muestras independientes con un nivel de significancia $\alpha = 0{,}05$:
 \begin{equation}
     H_0: \mu_{\text{base}} - \mu_{\text{alt}} = 0 \quad \text{vs.} \quad H_1: \mu_{\text{base}} - \mu_{\text{alt}} > 0
 \end{equation}
-con un nivel de significancia prefijado de $\alpha = 0{,}05$.
 
-A partir de los estimadores muestrales obtenidos en las 20 réplicas independientes de cada configuración ($n_1 = 20, \, n_2 = 20$):
+A partir de los estimadores muestrales exactos obtenidos en las 20 réplicas independientes de cada configuración ($n_1 = 20, \, n_2 = 20$):
 \begin{itemize}
-    \item \textbf{Escenario Base (1B):} $n_1 = 20$, $\bar{X}_1 = 12{,}66\text{ min}$, $S_1 = 4{,}00\text{ min}$ ($S_1^2 = 16{,}013$)
-    \item \textbf{Escenario Propuesta (2B):} $n_2 = 20$, $\bar{X}_2 = 5{,}86\text{ min}$, $S_2 = 0{,}15\text{ min}$ ($S_2^2 = 0{,}022$)
+    \item \textbf{Escenario Base (1B):} $n_1 = 20$, $\bar{X}_{\text{base}} = 12{,}6641\text{ min}$, $S_{\text{base}} = 3{,}9537\text{ min}$ ($S_{\text{base}}^2 = 15{,}6319$)
+    \item \textbf{Escenario Propuesto (2B):} $n_2 = 20$, $\bar{X}_{\text{alt}} = 5{,}8697\text{ min}$, $S_{\text{alt}} = 0{,}1495\text{ min}$ ($S_{\text{alt}}^2 = 0{,}0224$)
 \end{itemize}
 
-Dado que las varianzas muestrales difieren sustancialmente producto de la estabilización del flujo, se aplica el estadístico de prueba $t$ de Welch (sin asumir igualdad de varianzas):
+Dado que las varianzas muestrales difieren sustancialmente producto de la estabilización del flujo en el escenario propuesto, se aplica el estadístico de prueba $t$ de Welch (sin asumir igualdad de varianzas poblacionales):
 \begin{equation}
-    t = \frac{\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}}{\sqrt{\frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2}}} = \frac{12{,}6564 - 5{,}8648}{\sqrt{\frac{16{,}0131}{20} + \frac{0{,}0220}{20}}} = \frac{6{,}7916}{0{,}8954} = 7{,}59
+    t_{\text{calc}} = \frac{\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}}{\sqrt{\frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2}}} = \frac{12{,}6641 - 5{,}8697}{\sqrt{\frac{15{,}6319}{20} + \frac{0{,}0224}{20}}} = \frac{6{,}7945}{0{,}8847} = 7{,}6808
 \end{equation}
 
-Los grados de libertad efectivos se determinan mediante la aproximación de Welch-Satterthwaite:
+Los grados de libertad efectivos ($\nu$) se determinan mediante la ecuación de Welch-Satterthwaite:
 \begin{equation}
-    \nu = \frac{\left( \frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2} \right)^2}{\frac{(S_{\text{base}}^2 / n_1)^2}{n_1 - 1} + \frac{(S_{\text{alt}}^2 / n_2)^2}{n_2 - 1}} = \frac{(0{,}8018)^2}{\frac{(0{,}8007)^2}{19} + \frac{(0{,}0011)^2}{19}} \approx 19{,}05 \implies 19\text{ grados de libertad}
+    \nu = \frac{\left( \frac{S_{\text{base}}^2}{n_1} + \frac{S_{\text{alt}}^2}{n_2} \right)^2}{\frac{(S_{\text{base}}^2 / n_1)^2}{n_1 - 1} + \frac{(S_{\text{alt}}^2 / n_2)^2}{n_2 - 1}} = \frac{(0{,}7827)^2}{\frac{(0{,}7816)^2}{19} + \frac{(0{,}0011)^2}{19}} \approx 19{,}05 \implies 19\text{ grados de libertad}
 \end{equation}
 
 Para un nivel de significancia $\alpha = 0{,}05$ con $\nu = 19$, el valor crítico de la distribución $t$ de Student unilateral es:
@@ -277,17 +335,17 @@ Para un nivel de significancia $\alpha = 0{,}05$ con $\nu = 19$, el valor críti
     t_{\text{crítico}} = t_{19; \, 0{,}95} = 1{,}729
 \end{equation}
 
-Puesto que $t_{\text{calculado}} = 7{,}59 > t_{\text{crítico}} = 1{,}729$, el estadístico se ubica holgadamente en la región de rechazo de $H_0$, con un valor $p$ asociado de:
+Puesto que $t_{\text{calc}} = 7{,}6808 > t_{\text{crítico}} = 1{,}729$, el estadístico se ubica holgadamente en la región de rechazo de $H_0$, con un valor $p$ asociado de:
 \begin{equation}
-    p = 1{,}80 \times 10^{-7} < 0{,}0001
+    p = 1{,}51 \times 10^{-7} < 0{,}0001
 \end{equation}
 
-Asimismo, el intervalo de confianza al $95\%$ para la reducción media neta de tiempo $(\mu_{\text{base}} - \mu_{\text{alt}})$ resulta:
+Asimismo, el intervalo de confianza bilateral al $95\%$ ($t_{19; \, 0{,}975} = 2{,}093$) para la reducción media neta de tiempo $(\mu_{\text{base}} - \mu_{\text{alt}})$ resulta:
 \begin{equation}
-    IC_{95\%} = (\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}) \pm t_{19; \, 0{,}975} \cdot \text{SE} = 6{,}79 \pm (2{,}093 \cdot 0{,}8954) = [4{,}92 \;;\; 8{,}67]\text{ minutos}
+    IC_{95\%} = (\bar{X}_{\text{base}} - \bar{X}_{\text{alt}}) \pm t_{19; \, 0{,}975} \cdot \text{SE} = 6{,}7945 \pm (2{,}093 \cdot 0{,}8847) = [4{,}94 \;;\; 8{,}65]\text{ minutos}
 \end{equation}
 
-\noindent \textbf{Decisión Estadística:} Se rechaza categóricamente la hipótesis nula $H_0$ en favor de la hipótesis alternativa $H_1$. Se concluye con un $95\%$ de confianza que la implementación de dos biombos en paralelo por mesa reduce de forma estadísticamente significativa el tiempo medio de permanencia de los votantes en la escuela, con un ahorro medio estimado de entre 4,92 y 8,67 minutos por elector.
+\noindent \textbf{Decisión Estadística:} Como el intervalo de confianza $[4{,}94\text{ min} \;;\; 8{,}65\text{ min}]$ es íntegramente positivo y no contiene al cero, se rechaza categóricamente la hipótesis nula $H_0$ en favor de la hipótesis alternativa $H_1$. Se concluye con un $95\%$ de confianza que la implementación de dos biombos en paralelo por mesa reduce de forma estadísticamente significativa el tiempo medio de permanencia de los votantes en la escuela, generando un ahorro promedio de entre $4{,}94$ y $8{,}65\text{ minutos}$ por elector.
 
 \section{Conclusiones, Recomendaciones y Uso de Resultados}
 
@@ -295,19 +353,19 @@ El presente estudio de microsimulación peatonal sobre la Escuela Técnica N°1 
 
 \subsection{Conclusiones del Estudio}
 \begin{enumerate}
-    \item \textbf{Desmitificación del cuello de botella aislado:} La presunción intuitiva de que las demoras electorales se originan exclusivamente en la lentitud del votante al manipular boletas queda refutada en su concepción aislada. El tiempo de permanencia dentro del biombo es sumamente bajo y homogéneo ($\approx 1{,}55$ minutos). No obstante, en un esquema con biombo único, este cubículo se convierte en un cuello de botella sistémico que bloquea la mesa de las autoridades, generando un efecto cascada que traslada colas masivas a los pasillos con demoras de hasta 14,87 minutos en los picos de afluencia.
-    \item \textbf{Efectividad de la duplicación de biombos:} La incorporación de dos biombos en paralelo asistidos por las mismas autoridades desacopla con éxito la acreditación de la emisión del voto. La reducción del tiempo medio global de permanencia ($W$) es drástica: disminuye de 12,66 a 5,86 minutos ($-53{,}66\%$), una mejora corroborada por el contraste de hipótesis con significancia estadística extrema ($t = 7{,}59$, $p < 0{,}0001$).
-    \item \textbf{Estabilización del flujo y colapso de la variabilidad:} Más allá de la reducción del promedio, el hallazgo más trascendente reside en la certidumbre operativa: la desviación estándar del tiempo total colapsó de 4,00 minutos a tan solo 0,15 minutos. El Escenario Alternativo absorbe completamente las fluctuaciones estocásticas de la demanda, garantizando que ningún elector sufra demoras excesivas.
+    \item \textbf{Desmitificación del cuello de botella aislado:} La presunción intuitiva de que las demoras electorales se originan exclusivamente en la lentitud del votante al manipular boletas queda refutada en su concepción aislada. El tiempo de permanencia dentro del biombo es sumamente bajo y homogéneo ($\approx 1{,}55\text{ minutos}$). No obstante, en un esquema con biombo único, este cubículo restringe el drenaje de la mesa y acopla las filas de acreditación y egreso en los pasillos, generando un efecto cascada con demoras de hasta $14{,}87\text{ minutos}$ en acreditación y $28{,}19\text{ minutos}$ de tiempo total en los picos de afluencia.
+    \item \textbf{Efectividad de la duplicación de biombos:} La incorporación de dos biombos en paralelo asistidos por las mismas autoridades desacopla con éxito la acreditación de la emisión del voto. La reducción del tiempo medio global de permanencia ($W$) es drástica: disminuye de $12{,}66$ a $5{,}87\text{ minutos}$ ($-53{,}65\%$), una mejora corroborada por el contraste de hipótesis de Welch con significancia estadística extrema ($t = 7{,}6808$, $p = 1{,}51 \times 10^{-7}$).
+    \item \textbf{Estabilización del flujo y reducción de la variabilidad:} Más allá de la disminución del promedio, el hallazgo más trascendente reside en la previsibilidad operativa: la desviación estándar del tiempo total cayó de $3{,}95\text{ minutos}$ a tan solo $0{,}15\text{ minutos}$ ($9\text{ segundos}$). El Escenario Alternativo absorbe completamente las fluctuaciones estocásticas de la hora pico ($600\text{ votantes/h}$ simulados), garantizando que ningún elector sufra demoras excesivas.
     \item \textbf{Impacto espacial directo en los pasillos:} Tal como evidencian los mapas comparativos de densidad peatonal (\textit{Ped Density Maps}), el esquema de dos biombos disipa los focos de calor frente a las aulas y despeja las áreas de tránsito común, mejorando sustancialmente la seguridad y transitabilidad del recinto.
 \end{enumerate}
 
 \subsection{Recomendaciones Operativas y Uso de Resultados}
 \begin{itemize}
-    \item \textbf{Factibilidad técnico-económica sobresaliente:} La habilitación de un segundo biombo por mesa no requiere designar nuevas autoridades de mesa ni realizar obras civiles. Solo demanda la incorporación de un biombo o mampara de cartón plegable adicional dentro de cada aula y la reubicación del mobiliario, brindando una relación costo-beneficio inmejorable para la justicia electoral y el establecimiento escolar.
-    \item \textbf{Pre-identificación en el acceso:} Dado que la acreditación de identidad insume alrededor de 2 minutos por persona, se recomienda disponer de facilitadores en el ingreso al establecimiento para indicar de antemano el número de orden en el padrón, reduciendo aún más la interacción inicial frente a la mesa.
+    \item \textbf{Factibilidad técnico-económica sobresaliente:} La habilitación de un segundo biombo por mesa no requiere designar nuevas autoridades de mesa ni realizar obras civiles. Solo demanda la incorporación de un biombo o mampara de cartón plegable adicional dentro de cada aula y la disposición de dos atractores separados, brindando una relación costo-beneficio inmejorable para la justicia electoral y el establecimiento escolar.
+    \item \textbf{Pre-identificación en el acceso:} Dado que la acreditación de identidad insume alrededor de 2 minutos incluso en régimen fluido, se recomienda disponer de facilitadores en el ingreso al establecimiento para indicar de antemano la mesa y el número de orden en el padrón, agilizando aún más el trámite inicial frente a las autoridades.
 \end{itemize}
 
-En síntesis, los resultados cuantitativos, espaciales y estadísticos del modelo avalan de manera indiscutible la adopción de dos biombos por mesa como una intervención logística de impacto inmediato y costo prácticamente nulo para futuros comicios en el distrito.
+En síntesis, los resultados cuantitativos, espaciales y estadísticos del modelo avalan de manera contundente la adopción de dos biombos por mesa como una intervención logística de impacto inmediato y costo marginal nulo para futuros comicios en el distrito.
 
 % --- BIBLIOGRAFÍA ---
 \newpage

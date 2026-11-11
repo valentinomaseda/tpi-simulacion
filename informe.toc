@@ -4,13 +4,13 @@
 \contentsline {subsection}{\numberline {2.1}Parámetros de Servicio y Supuestos Estocásticos}{4}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Validación del Modelo Conceptual}{4}{section.3}%
 \contentsline {section}{\numberline {4}Construcción y Verificación del Programa}{5}{section.4}%
-\contentsline {section}{\numberline {5}Ejecuciones Piloto y Tamaño de Muestra}{6}{section.5}%
+\contentsline {section}{\numberline {5}Ejecuciones Piloto y Tamaño de Muestra}{7}{section.5}%
 \contentsline {section}{\numberline {6}Validación del Modelo Programado}{7}{section.6}%
-\contentsline {section}{\numberline {7}Diseño de Experimentos}{7}{section.7}%
-\contentsline {section}{\numberline {8}Corridas de Producción}{7}{section.8}%
-\contentsline {section}{\numberline {9}Análisis de los Datos de Salida}{8}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Análisis de Congestión Espacial y Tiempos de Espera}{8}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Contraste de Hipótesis: Test de Medias}{10}{subsection.9.2}%
-\contentsline {section}{\numberline {10}Conclusiones, Recomendaciones y Uso de Resultados}{11}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Conclusiones del Estudio}{11}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Recomendaciones Operativas y Uso de Resultados}{12}{subsection.10.2}%
+\contentsline {section}{\numberline {7}Diseño de Experimentos}{8}{section.7}%
+\contentsline {section}{\numberline {8}Corridas de Producción}{8}{section.8}%
+\contentsline {section}{\numberline {9}Análisis de los Datos de Salida}{9}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Análisis de Congestión Espacial y Tiempos por Fase}{9}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Contraste de Hipótesis: Test de Medias de Welch}{11}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Conclusiones, Recomendaciones y Uso de Resultados}{12}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Conclusiones del Estudio}{12}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Recomendaciones Operativas y Uso de Resultados}{13}{subsection.10.2}%

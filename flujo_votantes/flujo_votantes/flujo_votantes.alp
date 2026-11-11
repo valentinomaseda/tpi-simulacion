@@ -2384,7 +2384,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2423,6 +2423,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -2914,7 +2917,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2953,6 +2956,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -3329,7 +3335,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3368,6 +3374,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -3744,7 +3753,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3783,6 +3792,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -4274,7 +4286,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4313,6 +4325,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -4689,7 +4704,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4728,6 +4743,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -5104,7 +5122,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -5143,6 +5161,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -5519,7 +5540,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -5558,6 +5579,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -5934,7 +5958,7 @@
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -5973,6 +5997,9 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[targetReachTolerance]]></Name>
@@ -21555,8 +21582,8 @@
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1791158400000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1791194400000]]></FinalDate>
-				<FinalTime><![CDATA[36000.0]]></FinalTime>
+				<FinalDate><![CDATA[1791176400000]]></FinalDate>
+				<FinalTime><![CDATA[18000.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>
@@ -21611,15 +21638,67 @@
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1791158400000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1791194400000]]></FinalDate>
-				<FinalTime><![CDATA[36000.0]]></FinalTime>
+				<FinalDate><![CDATA[1791176400000]]></FinalDate>
+				<FinalTime><![CDATA[18000.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>
 		<!--   =========  Parameter Variation Experiment   ========  -->
 		<ParamVariationExperiment ActiveObjectClassId="1791236712587">
 			<Id>1791405426633</Id>
-			<Name><![CDATA[ParametersVariation]]></Name>
+			<Name><![CDATA[ParametersVariation2]]></Name>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<MaximumMemory>512</MaximumMemory>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<AfterSimulationRunCode><![CDATA[traceln("--- RESULTADOS DE LA RÉPLICA (EXTRAPOLADO A 10 HS REALES) ---");
+
+// W total: (segundos simulados * 2) / 60 = minutos reales
+double wTotal = (root.timeMeasureEnd.distribution.mean() * 2.0) / 60.0;
+
+// Como en el Paso 4 ya multiplicamos por 2.0 al guardar en los HistogramData, aquí solo dividimos por 60
+double tAcreditacion = root.statsAcreditacion.mean() / 60.0;
+double tBiombo = root.statsBiombo.mean() / 60.0;
+double tEgreso = root.statsEgreso.mean() / 60.0;
+
+traceln("W Total (min): " + wTotal + " | Acreditación (min): " + tAcreditacion + " | Biombo (min): " + tBiombo + " | Egreso (min): " + tEgreso);]]></AfterSimulationRunCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+
+
+			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<UseFreeformParameters>false</UseFreeformParameters>
+			<NumberOfRuns>10</NumberOfRuns>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
+				<InitialDate><![CDATA[1791158400000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1791176400000]]></FinalDate>	
+				<FinalTime><![CDATA[18000.0]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[flujo_votantes_1b : ParametersVariation]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>true</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>20</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1791500602704">
+			<Id>1794355436627</Id>
+			<Name><![CDATA[ParametersVariation1]]></Name>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
 			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
