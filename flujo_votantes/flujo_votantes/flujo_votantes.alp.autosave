@@ -1742,7 +1742,7 @@
 				<Schedule>
 					<Id>1794354366008</Id>
 					<Name><![CDATA[horarioLlegadas]]></Name>
-					<X>1840</X><Y>2560</Y>
+					<X>1840</X><Y>1920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1811,7 +1811,7 @@
     			<HistogramData>
 					<Id>1791404160029</Id>
 					<Name><![CDATA[statsAcreditacion]]></Name>
-					<X>40</X><Y>2400</Y>
+					<X>40</X><Y>1760</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1845,7 +1845,7 @@
     			<HistogramData>
 					<Id>1791404162197</Id>
 					<Name><![CDATA[statsBiombo]]></Name>
-					<X>40</X><Y>2440</Y>
+					<X>40</X><Y>1800</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1879,7 +1879,7 @@
     			<HistogramData>
 					<Id>1791404169593</Id>
 					<Name><![CDATA[statsEgreso]]></Name>
-					<X>40</X><Y>2480</Y>
+					<X>40</X><Y>1840</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1916,7 +1916,7 @@
 				<EmbeddedObject>
 					<Id>1791241292727</Id>
 					<Name><![CDATA[votantes]]></Name>
-					<X>40</X><Y>2140</Y>
+					<X>40</X><Y>1500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6350,7 +6350,7 @@
 				<Control Type="Window3D">
 					<Id>1791241234455</Id>
 					<Name><![CDATA[window3d]]></Name>
-					<X>300</X><Y>600</Y>
+					<X>1060</X><Y>140</Y>
 					<Width>500</Width>
 					<Height>300</Height>
 					<MakeDefaultViewArea>true</MakeDefaultViewArea>
@@ -10308,7 +10308,7 @@
     			<BarChart>
 					<Id>1791403235713</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>200</X><Y>1440</Y>
+					<X>200</X><Y>800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10382,7 +10382,7 @@
 				<DensityMap>
 					<Id>1791498704849</Id>
 					<Name><![CDATA[densityMap]]></Name>
-					<X>1720</X><Y>2550</Y>
+					<X>1720</X><Y>1910</Y>
 					<Label><X>-15</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10816,20 +10816,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795467005098</Id>
 					<Name><![CDATA[button4]]></Name>
-					<X>3569.6</X><Y>889.6</Y>
+					<X>3620</X><Y>840</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="150.16370106761565" Height="59.90243902439025">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaVisualizacion.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Visualización]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -10837,20 +10837,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795467005103</Id>
 					<Name><![CDATA[button5]]></Name>
-					<X>3719.764</X><Y>889.6</Y>
+					<X>3760</X><Y>840</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="150.16370106761565" Height="59.90243902439025">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaMetricas.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Métricas]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -10858,20 +10858,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795467039427</Id>
 					<Name><![CDATA[button]]></Name>
-					<X>1100</X><Y>260</Y>
+					<X>1280</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="169.91291996663958" Height="81.2612924872414">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaMetricas.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Métricas]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -10879,20 +10879,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795467039429</Id>
 					<Name><![CDATA[button1]]></Name>
-					<X>1269.914</X><Y>260</Y>
+					<X>1420</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="169.91291996663958" Height="81.2612924872414">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaLogica.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Lógica]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -10900,20 +10900,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795467068061</Id>
 					<Name><![CDATA[button2]]></Name>
-					<X>1280</X><Y>1480</Y>
+					<X>1300</X><Y>800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="150" Height="69.26829268292683">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaVisualizacion.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Visualización]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -10921,20 +10921,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795467068063</Id>
 					<Name><![CDATA[button3]]></Name>
-					<X>1430</X><Y>1480</Y>
+					<X>1440</X><Y>800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="150" Height="69.26829268292683">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaLogica.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Lógica]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -10971,12 +10971,12 @@
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[1. Visualización (2D / 3D y Mapa de Calor)]]></Title>
 					<Width>1560</Width>
-					<Height>900</Height>
+					<Height>600</Height>
 				</Area>
 				<Area>
 					<Id>1795466121926</Id>
 					<Name><![CDATA[vistaMetricas]]></Name>
-					<X>180</X><Y>1440</Y>
+					<X>180</X><Y>800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17528,7 +17528,7 @@
 				<Control Type="Window3D">
 					<Id>1791500602722</Id>
 					<Name><![CDATA[window3d]]></Name>
-					<X>300</X><Y>600</Y>
+					<X>1080</X><Y>140</Y>
 					<Width>500</Width>
 					<Height>300</Height>
 					<MakeDefaultViewArea>true</MakeDefaultViewArea>
@@ -21378,7 +21378,7 @@
     			<BarChart>
 					<Id>1791500603173</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>440</X><Y>960</Y>
+					<X>440</X><Y>880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21607,20 +21607,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795466688090</Id>
 					<Name><![CDATA[button]]></Name>
-					<X>1120</X><Y>200</Y>
+					<X>1300</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="149.9644128113879" Height="79.02439024390245">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaMetricas.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Métricas]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -21628,20 +21628,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795466747441</Id>
 					<Name><![CDATA[button1]]></Name>
-					<X>1269.964</X><Y>200</Y>
+					<X>1440</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="149.9644128113879" Height="79.02439024390245">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaLogica.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Lógica]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -21649,20 +21649,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795466817272</Id>
 					<Name><![CDATA[button2]]></Name>
-					<X>1540</X><Y>1040</Y>
+					<X>1620</X><Y>900</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="169.8932384341637" Height="59.51219512195122">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaVisualizacion.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Visualización]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -21670,20 +21670,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795466817288</Id>
 					<Name><![CDATA[button3]]></Name>
-					<X>1709.893</X><Y>1040</Y>
+					<X>1760</X><Y>900</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="169.8932384341637" Height="59.51219512195122">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaLogica.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Lógica]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -21691,20 +21691,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795466922461</Id>
 					<Name><![CDATA[button4]]></Name>
-					<X>3900</X><Y>820</Y>
+					<X>3980</X><Y>780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="159.9288256227758" Height="59.51219512195122">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaVisualizacion.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Visualización]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -21712,20 +21712,20 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1795466922463</Id>
 					<Name><![CDATA[button5]]></Name>
-					<X>4059.929</X><Y>820</Y>
+					<X>4120</X><Y>780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="159.9288256227758" Height="59.51219512195122">
+					<BasicProperties Width="140" Height="40">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[vistaMetricas.navigateTo();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="16" Style="0"/>
+						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[Ir a Métricas]]></LabelText>
 					</ExtendedProperties>
 				</Control>
@@ -21762,12 +21762,12 @@
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[1. Visualización (2D / 3D y Mapa de Calor)]]></Title>
 					<Width>1580</Width>
-					<Height>900</Height>
+					<Height>600</Height>
 				</Area>
 				<Area>
 					<Id>1795466608226</Id>
 					<Name><![CDATA[vistaMetricas]]></Name>
-					<X>440</X><Y>980</Y>
+					<X>440</X><Y>900</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
