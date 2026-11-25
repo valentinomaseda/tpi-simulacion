@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.9.202606170507" AlpVersion="8.9.9">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.10.202609231424" AlpVersion="8.9.10">
 <Model>
 	<Id>1791236712583</Id>
 	<Name><![CDATA[flujo_votantes]]></Name>
@@ -48,6 +48,7 @@
 					<Code><![CDATA[10]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 				</VelocityCode>
+				<MessageType><![CDATA[Object]]></MessageType>
 				<PhysicalLength Class="CodeUnitValue">
 					<Code><![CDATA[1]]></Code>
 					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
@@ -62,24 +63,30 @@
 				</PhysicalHeight>
 			</AgentProperties>
 			<EnvironmentProperties>
-					<EnableSteps>false</EnableSteps>
-					<StepDurationCode Class="CodeUnitValue">
-						<Code><![CDATA[1.0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</StepDurationCode>
-					<SpaceType>CONTINUOUS</SpaceType>
-					<WidthCode><![CDATA[500]]></WidthCode>
-					<HeightCode><![CDATA[500]]></HeightCode>
-					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
-					<LayoutType>USER_DEF</LayoutType>
-					<NetworkType>USER_DEF</NetworkType>
-					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
-					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
-					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
-					<MCode><![CDATA[10]]></MCode>
+				<EnableSteps>false</EnableSteps>
+				<StepDurationCode Class="CodeUnitValue">
+					<Code><![CDATA[1.0]]></Code>
+					<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+				</StepDurationCode>
+				<SpaceType>CONTINUOUS</SpaceType>
+				<WidthCode><![CDATA[500]]></WidthCode>
+				<HeightCode><![CDATA[500]]></HeightCode>
+				<ZHeightCode><![CDATA[0]]></ZHeightCode>
+				<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+				<RowsCountCode><![CDATA[100]]></RowsCountCode>
+				<NeigborhoodType>MOORE</NeigborhoodType>
+				<LayoutType>USER_DEF</LayoutType>
+				<NetworkType>USER_DEF</NetworkType>
+				<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+				<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+				<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+				<MCode><![CDATA[10]]></MCode>
+				<LineStyle>SOLID</LineStyle>
+				<LineWidth>1</LineWidth>
+				<LineColor>-16777216</LineColor>
+				<LineZOrder>UNDER_AGENTS</LineZOrder>
+				<LineArrow>NONE</LineArrow>
+				<LineArrowPosition>END</LineArrowPosition>
 			</EnvironmentProperties>
 			<DatasetsCreationProperties>
 				<AutoCreate>true</AutoCreate>
@@ -112,7 +119,6 @@
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
 			<CurrentLevel>1791236712593</CurrentLevel>
-			<ConnectionsId>1791236712588</ConnectionsId>
 			<Connectors>
 				<Connector>
 					<Id>1794354326762</Id>
@@ -1741,51 +1747,64 @@
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<ValueType>double_</ValueType>
-					<UnitType><![CDATA[RATE]]></UnitType>
-					<UnitOfValue Class="RateUnits"><![CDATA[PER_HOUR]]></UnitOfValue>
-					<DefaultValue>0.0</DefaultValue>
-					<RepresentationMode>intervals</RepresentationMode>
-					<RepresentationType>timeUnits</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>0</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>false</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<Id>1794354366006</Id>
-						<TableReference>
-						</TableReference>
+					<ScheduleV2>
+						<Defines>CUSTOM_SCHEDULE</Defines>
+						<ValueType>double_</ValueType>
+						<UnitType><![CDATA[RATE]]></UnitType>
+						<UnitOfValue Class="RateUnits"><![CDATA[PER_HOUR]]></UnitOfValue>
+						<DefaultValue>0.0</DefaultValue>
+						<RepresentationType>calendar</RepresentationType>
+						<ApplyToDays>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+						</ApplyToDays>
+						<FirstDayOfWeek>monday</FirstDayOfWeek>
+						<TimeUnitsInterval>hours</TimeUnitsInterval>
+						<RepeatTime>86400000</RepeatTime>
+						<SnapToMode>START_TIME</SnapToMode>
+						<SnapToDate>1791158400000</SnapToDate>
+						<SnapToTime Class="UnitValue">
+							<Value Class="Long">0</Value>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</SnapToTime>
+						<AllDayExceptionMode>false</AllDayExceptionMode>
+						<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+						<IntervalsQuery>
+							<Id>1794354366006</Id>
+							<TableReference>
+							</TableReference>
 							<StartColumnReference>
 							</StartColumnReference>
 							<EndColumnReference>
 							</EndColumnReference>
 							<ValueColumnReference>
 							</ValueColumnReference>
-					</IntervalsQuery>
-					<Intervals>
-						<Interval>
-							<Start>0</Start>
-							<End>3600000</End>
-							<Value>200.0</Value>
-						</Interval>
-						<Interval>
-							<Start>3600000</Start>
-							<End>7200000</End>
-							<Value>600.0</Value>
-						</Interval>
-						<Interval>
-							<Start>7200000</Start>
-							<End>18000000</End>
-							<Value>466.33</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-					</Exceptions>
+						</IntervalsQuery>
+						<Intervals>
+							<Interval>
+								<Start>0</Start>
+								<End>3600000</End>
+								<Value>200.0</Value>
+							</Interval>
+							<Interval>
+								<Start>3600000</Start>
+								<End>7200000</End>
+								<Value>600.0</Value>
+							</Interval>
+							<Interval>
+								<Start>7200000</Start>
+								<End>18000000</End>
+								<Value>466.33</Value>
+							</Interval>
+						</Intervals>
+						<Exceptions>
+						</Exceptions>
+					</ScheduleV2>
 				</Schedule>
 			</Schedules>
 			<AnalysisData>
@@ -1892,27 +1911,6 @@
 					<Title><![CDATA[]]></Title>
 				</HistogramData>
 			</AnalysisData>
-			<AgentLinks>
-				<AgentLink>
-					<Id>1791236712588</Id>
-					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<HandleReceiveInConnections>false</HandleReceiveInConnections>
-					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
-					<AgentLinkBidirectional>true</AgentLinkBidirectional>
-					<MessageType><![CDATA[Object]]></MessageType>
-					<LineStyle>SOLID</LineStyle>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineZOrder>UNDER_AGENTS</LineZOrder>
-					<LineArrow>NONE</LineArrow>
-					<LineArrowPosition>END</LineArrowPosition>
-				</AgentLink>
-			</AgentLinks>
 
 			<EmbeddedObjects>
 				<EmbeddedObject>
@@ -6368,7 +6366,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Wall>
 					<Id>1791242243238</Id>
 					<Name><![CDATA[wall]]></Name>
@@ -6756,7 +6754,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291572304</Id>
 					<Name><![CDATA[table2]]></Name>
@@ -6790,7 +6788,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291641800</Id>
 					<Name><![CDATA[table3]]></Name>
@@ -6824,7 +6822,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291646161</Id>
 					<Name><![CDATA[table4]]></Name>
@@ -6858,7 +6856,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291649407</Id>
 					<Name><![CDATA[table5]]></Name>
@@ -6892,7 +6890,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291652704</Id>
 					<Name><![CDATA[table6]]></Name>
@@ -6926,7 +6924,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291679475</Id>
 					<Name><![CDATA[table7]]></Name>
@@ -6960,7 +6958,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791291687643</Id>
 					<Name><![CDATA[table8]]></Name>
@@ -6994,7 +6992,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Wall>
 					<Id>1791292348086</Id>
 					<Name><![CDATA[wall12]]></Name>
@@ -10787,10 +10785,7 @@
 						<Title><![CDATA[Title]]></Title>
 					</HistogramDataExpression>
     			</Histogram>
-			</Presentation>
-
-				</Level>
-				<EmbeddedObjectPresentation>
+                <EmbeddedObjectPresentation>
 					<Id>1791241292746</Id>
 					<Name><![CDATA[votantes_presentation]]></Name>
 					<X>1410</X><Y>50</Y>
@@ -10807,7 +10802,10 @@
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
-				</EmbeddedObjectPresentation>
+                </EmbeddedObjectPresentation>
+			</Presentation>
+
+				</Level>
 			</Presentation>
 
 		</ActiveObjectClass>
@@ -10845,6 +10843,7 @@
 					<Code><![CDATA[10]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 				</VelocityCode>
+				<MessageType><![CDATA[Object]]></MessageType>
 				<PhysicalLength Class="CodeUnitValue">
 					<Code><![CDATA[1]]></Code>
 					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
@@ -10859,24 +10858,30 @@
 				</PhysicalHeight>
 			</AgentProperties>
 			<EnvironmentProperties>
-					<EnableSteps>false</EnableSteps>
-					<StepDurationCode Class="CodeUnitValue">
-						<Code><![CDATA[1.0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</StepDurationCode>
-					<SpaceType>CONTINUOUS</SpaceType>
-					<WidthCode><![CDATA[500]]></WidthCode>
-					<HeightCode><![CDATA[500]]></HeightCode>
-					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
-					<LayoutType>USER_DEF</LayoutType>
-					<NetworkType>USER_DEF</NetworkType>
-					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
-					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
-					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
-					<MCode><![CDATA[10]]></MCode>
+				<EnableSteps>false</EnableSteps>
+				<StepDurationCode Class="CodeUnitValue">
+					<Code><![CDATA[1.0]]></Code>
+					<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+				</StepDurationCode>
+				<SpaceType>CONTINUOUS</SpaceType>
+				<WidthCode><![CDATA[500]]></WidthCode>
+				<HeightCode><![CDATA[500]]></HeightCode>
+				<ZHeightCode><![CDATA[0]]></ZHeightCode>
+				<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+				<RowsCountCode><![CDATA[100]]></RowsCountCode>
+				<NeigborhoodType>MOORE</NeigborhoodType>
+				<LayoutType>USER_DEF</LayoutType>
+				<NetworkType>USER_DEF</NetworkType>
+				<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+				<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+				<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+				<MCode><![CDATA[10]]></MCode>
+				<LineStyle>SOLID</LineStyle>
+				<LineWidth>1</LineWidth>
+				<LineColor>-16777216</LineColor>
+				<LineZOrder>UNDER_AGENTS</LineZOrder>
+				<LineArrow>NONE</LineArrow>
+				<LineArrowPosition>END</LineArrowPosition>
 			</EnvironmentProperties>
 			<DatasetsCreationProperties>
 				<AutoCreate>true</AutoCreate>
@@ -10909,7 +10914,6 @@
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
 			<CurrentLevel>1791400654950</CurrentLevel>
-			<ConnectionsId>1791400654945</ConnectionsId>
 			<Variables>
 				<Variable Class="PlainVariable">
 					<Id>1791404130858</Id>
@@ -10924,27 +10928,6 @@
 					</Properties>
 				</Variable>
 			</Variables>
-			<AgentLinks>
-				<AgentLink>
-					<Id>1791400654945</Id>
-					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<HandleReceiveInConnections>false</HandleReceiveInConnections>
-					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
-					<AgentLinkBidirectional>true</AgentLinkBidirectional>
-					<MessageType><![CDATA[Object]]></MessageType>
-					<LineStyle>SOLID</LineStyle>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineZOrder>UNDER_AGENTS</LineZOrder>
-					<LineArrow>NONE</LineArrow>
-					<LineArrowPosition>END</LineArrowPosition>
-				</AgentLink>
-			</AgentLinks>
 
 			<ContainerLinks>
 				<ContainerLink>
@@ -11038,7 +11021,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 			</Presentation>
 
 				</Level>
@@ -11079,6 +11062,7 @@
 					<Code><![CDATA[10]]></Code>
 					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 				</VelocityCode>
+				<MessageType><![CDATA[Object]]></MessageType>
 				<PhysicalLength Class="CodeUnitValue">
 					<Code><![CDATA[1]]></Code>
 					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
@@ -11093,24 +11077,30 @@
 				</PhysicalHeight>
 			</AgentProperties>
 			<EnvironmentProperties>
-					<EnableSteps>false</EnableSteps>
-					<StepDurationCode Class="CodeUnitValue">
-						<Code><![CDATA[1.0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</StepDurationCode>
-					<SpaceType>CONTINUOUS</SpaceType>
-					<WidthCode><![CDATA[500]]></WidthCode>
-					<HeightCode><![CDATA[500]]></HeightCode>
-					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
-					<LayoutType>USER_DEF</LayoutType>
-					<NetworkType>USER_DEF</NetworkType>
-					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
-					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
-					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
-					<MCode><![CDATA[10]]></MCode>
+				<EnableSteps>false</EnableSteps>
+				<StepDurationCode Class="CodeUnitValue">
+					<Code><![CDATA[1.0]]></Code>
+					<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+				</StepDurationCode>
+				<SpaceType>CONTINUOUS</SpaceType>
+				<WidthCode><![CDATA[500]]></WidthCode>
+				<HeightCode><![CDATA[500]]></HeightCode>
+				<ZHeightCode><![CDATA[0]]></ZHeightCode>
+				<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+				<RowsCountCode><![CDATA[100]]></RowsCountCode>
+				<NeigborhoodType>MOORE</NeigborhoodType>
+				<LayoutType>USER_DEF</LayoutType>
+				<NetworkType>USER_DEF</NetworkType>
+				<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+				<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+				<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+				<MCode><![CDATA[10]]></MCode>
+				<LineStyle>SOLID</LineStyle>
+				<LineWidth>1</LineWidth>
+				<LineColor>-16777216</LineColor>
+				<LineZOrder>UNDER_AGENTS</LineZOrder>
+				<LineArrow>NONE</LineArrow>
+				<LineArrowPosition>END</LineArrowPosition>
 			</EnvironmentProperties>
 			<DatasetsCreationProperties>
 				<AutoCreate>true</AutoCreate>
@@ -11143,7 +11133,6 @@
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
 			<CurrentLevel>1791500602718</CurrentLevel>
-			<ConnectionsId>1791500604123</ConnectionsId>
 			<Connectors>
 				<Connector>
 					<Id>1791500604025</Id>
@@ -12772,51 +12761,64 @@
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<ValueType>double_</ValueType>
-					<UnitType><![CDATA[RATE]]></UnitType>
-					<UnitOfValue Class="RateUnits"><![CDATA[PER_HOUR]]></UnitOfValue>
-					<DefaultValue>0.0</DefaultValue>
-					<RepresentationMode>intervals</RepresentationMode>
-					<RepresentationType>timeUnits</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>0</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>false</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<Id>1791500603178</Id>
-						<TableReference>
-						</TableReference>
+					<ScheduleV2>
+						<Defines>CUSTOM_SCHEDULE</Defines>
+						<ValueType>double_</ValueType>
+						<UnitType><![CDATA[RATE]]></UnitType>
+						<UnitOfValue Class="RateUnits"><![CDATA[PER_HOUR]]></UnitOfValue>
+						<DefaultValue>0.0</DefaultValue>
+						<RepresentationType>calendar</RepresentationType>
+						<ApplyToDays>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+							<Day>true</Day>
+						</ApplyToDays>
+						<FirstDayOfWeek>monday</FirstDayOfWeek>
+						<TimeUnitsInterval>hours</TimeUnitsInterval>
+						<RepeatTime>86400000</RepeatTime>
+						<SnapToMode>START_TIME</SnapToMode>
+						<SnapToDate>1791158400000</SnapToDate>
+						<SnapToTime Class="UnitValue">
+							<Value Class="Long">0</Value>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</SnapToTime>
+						<AllDayExceptionMode>false</AllDayExceptionMode>
+						<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+						<IntervalsQuery>
+							<Id>1791500603178</Id>
+							<TableReference>
+							</TableReference>
 							<StartColumnReference>
 							</StartColumnReference>
 							<EndColumnReference>
 							</EndColumnReference>
 							<ValueColumnReference>
 							</ValueColumnReference>
-					</IntervalsQuery>
-					<Intervals>
-						<Interval>
-							<Start>0</Start>
-							<End>3600000</End>
-							<Value>200.0</Value>
-						</Interval>
-						<Interval>
-							<Start>3600000</Start>
-							<End>7200000</End>
-							<Value>600.0</Value>
-						</Interval>
-						<Interval>
-							<Start>7200000</Start>
-							<End>18000000</End>
-							<Value>466.33</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-					</Exceptions>
+						</IntervalsQuery>
+						<Intervals>
+							<Interval>
+								<Start>0</Start>
+								<End>3600000</End>
+								<Value>200.0</Value>
+							</Interval>
+							<Interval>
+								<Start>3600000</Start>
+								<End>7200000</End>
+								<Value>600.0</Value>
+							</Interval>
+							<Interval>
+								<Start>7200000</Start>
+								<End>18000000</End>
+								<Value>466.33</Value>
+							</Interval>
+						</Intervals>
+						<Exceptions>
+						</Exceptions>
+					</ScheduleV2>
 				</Schedule>
 			</Schedules>
 			<AnalysisData>
@@ -12923,27 +12925,6 @@
 					<Title><![CDATA[]]></Title>
 				</HistogramData>
 			</AnalysisData>
-			<AgentLinks>
-				<AgentLink>
-					<Id>1791500604123</Id>
-					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<HandleReceiveInConnections>false</HandleReceiveInConnections>
-					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
-					<AgentLinkBidirectional>true</AgentLinkBidirectional>
-					<MessageType><![CDATA[Object]]></MessageType>
-					<LineStyle>SOLID</LineStyle>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineZOrder>UNDER_AGENTS</LineZOrder>
-					<LineArrow>NONE</LineArrow>
-					<LineArrowPosition>END</LineArrowPosition>
-				</AgentLink>
-			</AgentLinks>
 
 			<EmbeddedObjects>
 				<EmbeddedObject>
@@ -17399,7 +17380,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Wall>
 					<Id>1791500602726</Id>
 					<Name><![CDATA[wall]]></Name>
@@ -17787,7 +17768,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602752</Id>
 					<Name><![CDATA[table2]]></Name>
@@ -17821,7 +17802,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602754</Id>
 					<Name><![CDATA[table3]]></Name>
@@ -17855,7 +17836,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602756</Id>
 					<Name><![CDATA[table4]]></Name>
@@ -17889,7 +17870,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602758</Id>
 					<Name><![CDATA[table5]]></Name>
@@ -17923,7 +17904,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602760</Id>
 					<Name><![CDATA[table6]]></Name>
@@ -17957,7 +17938,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602762</Id>
 					<Name><![CDATA[table7]]></Name>
@@ -17991,7 +17972,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Figure3D>
 					<Id>1791500602764</Id>
 					<Name><![CDATA[table8]]></Name>
@@ -18025,7 +18006,7 @@
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
+				</Figure3D>
 				<Wall>
 					<Id>1791500602766</Id>
 					<Name><![CDATA[wall12]]></Name>
@@ -21431,10 +21412,7 @@
 						<RelativeWidth>0.8</RelativeWidth>
 					</Bars>
     			</BarChart>
-			</Presentation>
-
-				</Level>
-				<EmbeddedObjectPresentation>
+                <EmbeddedObjectPresentation>
 					<Id>1791500603177</Id>
 					<Name><![CDATA[votantes_presentation]]></Name>
 					<X>1410</X><Y>50</Y>
@@ -21451,7 +21429,10 @@
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
-				</EmbeddedObjectPresentation>
+                </EmbeddedObjectPresentation>
+			</Presentation>
+
+				</Level>
 			</Presentation>
 
 		</ActiveObjectClass>
@@ -21771,7 +21752,14 @@ traceln("W Total (min): " + wTotal + " | Acreditación (min): " + tAcreditacion 
 	<Uuid>0a27038a-0f3a-48bb-b235-4a44066a1402</Uuid>
 	<Uuid>0a9ec2c3-5e18-4c0a-a183-fd86d9d9a08b</Uuid>
 	<Uuid>2216cdd0-177c-5678-9e88-dd8b95313334</Uuid>
+	<Uuid>92afa9c7-cb47-45df-8559-1b947cbeacee</Uuid>
+	<Uuid>896f4ff2-c039-43e1-8c65-183592ba63e2</Uuid>
+	<Uuid>eada5e9c-56b7-4492-b3b1-03f1eb36a209</Uuid>
 	<Uuid>2216cdd0-177c-5678-9e88-dd8b95313335</Uuid>
 	<Uuid>5b8ebeed-6b58-4c3a-8d5f-0958b1a90ce6</Uuid>
+	<Uuid>c39ae7a6-edcf-4673-923a-96829a5df80c</Uuid>
+	<Uuid>af233c46-2e37-4dd0-a79f-cc6184140b1c</Uuid>
+	<Uuid>53a0a65d-9a11-4cd9-8e3a-c6852af4d6e3</Uuid>
+	<Uuid>01593659-ae66-4c89-b2b6-9a95d1c1f509</Uuid>
 </ConvertersApplied>
 </AnyLogicWorkspace>
